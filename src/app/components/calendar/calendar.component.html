@@ -4,4 +4,9 @@
         <p>Количество дней в месяце: {{currentMonth.days}}</p>
         <p>Номер месяца: {{currentMonth.monthPosition}}</p>
     </div>
+    <div>
+        <ul>
+            <li *ngFor="let day of currentDaysOfMonth">{{day.dayOfMonth}} {{day.dayOfWeek}}</li>
+        </ul>
+    </div>
 </div>

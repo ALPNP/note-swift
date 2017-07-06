@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 
-import { Month } from '../../models/month.model';
+import {Month} from '../../models/month.model';
+import {Day} from '../../models/day.model';
+import {Utilities} from '../../utilities/utilities';
 
 @Component({
     selector: 'calendar',
@@ -9,20 +11,25 @@ import { Month } from '../../models/month.model';
 export class CalendarComponent implements OnInit{
 
     currentMonth: Month;
+    currentDaysOfMonth: Day[] = [];
+    utilities: Utilities = new Utilities();
 
     constructor(){}
 
     ngOnInit() {
-        let params: any = this.getMonthInfo();
+        let params: any = this.utilities.getMonthInfo();
         this.currentMonth = new Month(params);
+        this.createDays();
+        console.log(this.currentDaysOfMonth);
     }
 
-    private getMonthInfo() {
-        let now = new Date();
-        let monthInfo: any = {
-            days: new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate(),
-            monthPosition: new Date(now.getFullYear(), now.getMonth() + 1, 0).getMonth() + 1
-        };
-        return monthInfo;
+    private createDays() {
+        let maxDays = this.currentMonth.days;
+        console.log(maxDays);
+        for (let i = 1; i <= maxDays; i++) {
+            console.log(i);
+            let day: Day = new Day(i, 'Понедельник');
+            this.currentDaysOfMonth.push(day);
+        }
     }
 }
