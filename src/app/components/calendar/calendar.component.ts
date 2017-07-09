@@ -28,7 +28,7 @@ export class CalendarComponent implements OnInit{
         console.log(maxDays);
         for (let i = 1; i <= maxDays; i++) {
             console.log(i);
-            let day: Day = new Day(i, 'Понедельник');
+            let day: Day = new Day(i, 'Понедельник', 1, 1, "DDBDF1");
             this.currentDaysOfMonth.push(day);
         }
     }

@@ -1,4 +1,11 @@
 export class Day {
-    constructor(public dayOfMonth: number, public dayOfWeek: string) {
+    color: string;
+
+    constructor(public dayOfMonth: number,
+                public dayOfWeek: string,
+                public cols: number,
+                public rows: number,
+                color: string) {
+        this.color =  '#' + color;
     }
 }
