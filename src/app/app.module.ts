@@ -5,10 +5,15 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MdMenuModule} from '@angular/material';
 import {MdButtonModule} from '@angular/material';
 import {MdIconModule} from '@angular/material';
+import {MdGridListModule} from '@angular/material';
+import {MdCardModule} from '@angular/material';
 
 import {AppComponent} from './app.component';
 import {MainMenuComponent} from './components/main-menu/main-menu.component';
 import {CalendarComponent} from './components/calendar/calendar.component';
+import {DashboardComponent} from './components/dashboard/dashboard.component';
+
+import {routing} from './app.routing';
 
 import 'hammerjs';
 
@@ -16,14 +21,18 @@ import 'hammerjs';
     declarations: [
         AppComponent,
         CalendarComponent,
-        MainMenuComponent
+        MainMenuComponent,
+        DashboardComponent
     ],
     imports: [
         BrowserModule,
         BrowserAnimationsModule,
         MdMenuModule,
         MdButtonModule,
-        MdIconModule
+        MdIconModule,
+        MdGridListModule,
+        MdCardModule,
+        routing
     ],
     providers: [],
     bootstrap: [AppComponent]
