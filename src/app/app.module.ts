@@ -11,6 +11,8 @@ import {MdGridListModule} from '@angular/material';
 import {MdCardModule} from '@angular/material';
 import {MdInputModule} from '@angular/material';
 
+import {AuthModule} from './modules';
+
 import {AppComponent} from './app.component';
 import {MainMenuComponent} from './components/main-menu/main-menu.component';
 import {CalendarComponent} from './components/calendar/calendar.component';
@@ -32,6 +34,7 @@ import 'hammerjs';
     imports: [
         BrowserModule,
         HttpModule,
+        AuthModule,
         BrowserAnimationsModule,
         ReactiveFormsModule,
         MdMenuModule,
