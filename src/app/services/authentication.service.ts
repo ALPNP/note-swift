@@ -10,21 +10,24 @@ import 'rxjs/add/observable/throw';
 export class AuthenticationService{
 
     token: string;
+    baseUrl: string;
 
     constructor(private http: Http){
+        this.baseUrl = 'http://localhost:8080/api';
     }
 
-    public login(name:string, password:string) {
-        console.log(name, password);
+    public login(name:string, password:string): Observable<any> {
         const body = 'name=' + name + '&password=' + password;
-        console.log(body);
-
         let headers = new Headers({'Content-Type': 'application/x-www-form-urlencoded'});
-        return this.http.post('http://localhost:8080/api/auth', body, {headers: headers})
+        return this.http.post(`${this.baseUrl}/auth`, body, {headers: headers})
             .map((res: Response) => {
                 let token = res.json() && res.json().token;
                 console.log(res);
                 console.log(token);
+            })
+            .catch((error): any => {
+                return Observable.throw(error);
             });
+
     }
 }
