@@ -30,6 +30,15 @@ export class LoginComponent implements OnInit{
     login() {
         console.log(this.model);
         this.loading = true;
-        this.authenticationService.login(this.model.name, this.model.password).subscribe();
+        this.authenticationService.login(this.model.name, this.model.password).subscribe(
+            data => {
+                if (data) {
+                    // this.router.navigate(['/dashboard']);
+                } else {
+
+                }
+            },
+            error => console.log(error)
+        );
     }
 }
