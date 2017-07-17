@@ -3,6 +3,7 @@ import {Router} from "@angular/router";
 import {FormGroup, FormControl, Validators} from "@angular/forms";
 
 import {AuthenticationService} from '../../services/authentication.service';
+import {NotificationsService} from "angular2-notifications/dist";
 
 @Component({
     selector: 'login',
@@ -14,9 +15,15 @@ export class LoginComponent implements OnInit{
     loginForm: FormGroup;
     model: any = {};
     loading = false;
-    error = '';
+
+    public options = {
+        position: ["bottom", "right"],
+        timeOut: 6000,
+        lastOnBottom: true
+    };
 
     constructor(private router: Router,
+                private notificationsService: NotificationsService,
                 private authenticationService: AuthenticationService) {
     }
 
@@ -28,17 +35,18 @@ export class LoginComponent implements OnInit{
     }
 
     login() {
-        console.log(this.model);
         this.loading = true;
         this.authenticationService.login(this.model.name, this.model.password).subscribe(
             data => {
                 if (data) {
-                    // this.router.navigate(['/dashboard']);
+                    this.router.navigate(['/dashboard']);
                 } else {
-
+                    this.loginForm.reset();
+                    this.notificationsService.error('Ошибка', 'Некорректный логин или пароль');
                 }
             },
-            error => console.log(error)
+            error => console.log(error),
+            () => this.loading = false
         );
     }
 }

@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {Http} from '@angular/http';
 import {Response, Headers} from '@angular/http';
 import {Observable} from 'rxjs/Observable';
+import {Router} from "@angular/router";
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
@@ -14,7 +15,8 @@ export class AuthenticationService{
     baseUrl: string;
     jwtHelper: JwtHelper = new JwtHelper();
 
-    constructor(private http: Http){
+    constructor(private http: Http,
+                private router: Router){
         this.baseUrl = 'http://localhost:8080/api';
     }
 
@@ -29,6 +31,7 @@ export class AuthenticationService{
                     this.setUserName(token);
                     return true;
                 } else {
+                    console.log(res.json());
                     return false;
                 }
             })
@@ -42,13 +45,17 @@ export class AuthenticationService{
         this.username = decodedPayload['_doc']['name'];
     }
 
-    public logOut() {
+    private deleteAuthData(): void {
         this.username = null;
         localStorage.removeItem('token');
     }
 
-    public isLoggedIn() {
-        console.log(tokenNotExpired());
+    public logOut() {
+        this.deleteAuthData();
+        this.router.navigate(['/login']);
+    }
+
+    public isLoggedIn(): boolean {
         return tokenNotExpired();
     }
 }

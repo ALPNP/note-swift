@@ -11,13 +11,18 @@ import {MdGridListModule} from '@angular/material';
 import {MdCardModule} from '@angular/material';
 import {MdInputModule} from '@angular/material';
 
+import {SimpleNotificationsModule} from 'angular2-notifications';
+
 import {AuthModule} from './modules';
+import {AuthGuard} from './guards/auth.guard';
+import {AuthenticationService} from './services/authentication.service';
 
 import {AppComponent} from './app.component';
 import {MainMenuComponent} from './components/main-menu/main-menu.component';
 import {CalendarComponent} from './components/calendar/calendar.component';
 import {DashboardComponent} from './components/dashboard/dashboard.component';
 import {LoginComponent} from './components/login/login.component';
+import {CostsComponent} from "./components/costs/costs.component";
 
 import {routing} from './app.routing';
 
@@ -29,7 +34,8 @@ import 'hammerjs';
         CalendarComponent,
         MainMenuComponent,
         DashboardComponent,
-        LoginComponent
+        LoginComponent,
+        CostsComponent
     ],
     imports: [
         BrowserModule,
@@ -43,9 +49,12 @@ import 'hammerjs';
         MdGridListModule,
         MdCardModule,
         MdInputModule,
-        routing
+        routing,
+        SimpleNotificationsModule.forRoot()
     ],
     providers: [
+        AuthGuard,
+        AuthenticationService
     ],
     bootstrap: [AppComponent]
 })
