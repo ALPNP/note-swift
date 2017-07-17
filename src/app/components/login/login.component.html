@@ -7,17 +7,17 @@
             <md-input-container>
                 <input mdInput formControlName="name"
                        [(ngModel)]="model.name"
-                       placeholder="Логин"
-                       value="">
+                       placeholder="Логин">
             </md-input-container>
             <md-input-container>
                 <input type="password" mdInput formControlName="password"
                        [(ngModel)]="model.password"
-                       placeholder="Пароль"
-                       value="">
+                       placeholder="Пароль">
             </md-input-container>
+            <br>
             <button md-button
                     [disabled]="!loginForm.valid">Войти</button>
         </form>
     </div>
+    <simple-notifications [options]="options"></simple-notifications>
 </div>
