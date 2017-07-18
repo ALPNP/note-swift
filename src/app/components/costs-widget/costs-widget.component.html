@@ -1,0 +1,24 @@
+<md-card class="costs-widget">
+    <md-card-header class="costs-widget-header">
+        <md-card-title>Бюджет:</md-card-title>
+        <md-card-subtitle></md-card-subtitle>
+    </md-card-header>
+    <md-card-content>
+        <div class="">
+            <div style="display: block;">
+                <canvas baseChart
+                        [datasets]="barChartData"
+                        [labels]="barChartLabels"
+                        [options]="barChartOptions"
+                        [legend]="barChartLegend"
+                        [chartType]="barChartType"
+                        (chartHover)="chartHovered($event)"
+                        (chartClick)="chartClicked($event)"></canvas>
+            </div>
+        </div>
+        <hr>
+        <!--<div class="">-->
+        <!--<button md-raised-button (click)="randomize()">random</button>-->
+        <!--</div>-->
+    </md-card-content>
+</md-card>

@@ -4,12 +4,14 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ReactiveFormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
 
-import {MdMenuModule} from '@angular/material';
+import {MdMenuModule, MdTabsModule} from '@angular/material';
 import {MdButtonModule} from '@angular/material';
 import {MdIconModule} from '@angular/material';
 import {MdGridListModule} from '@angular/material';
 import {MdCardModule} from '@angular/material';
 import {MdInputModule} from '@angular/material';
+
+import {ChartsModule} from 'ng2-charts/ng2-charts';
 
 import {SimpleNotificationsModule} from 'angular2-notifications';
 
@@ -27,6 +29,7 @@ import {CostsComponent} from "./components/costs/costs.component";
 import {routing} from './app.routing';
 
 import 'hammerjs';
+import {CostsWidgetComponent} from "./components/costs-widget/costs-widget.component";
 
 @NgModule({
     declarations: [
@@ -35,7 +38,8 @@ import 'hammerjs';
         MainMenuComponent,
         DashboardComponent,
         LoginComponent,
-        CostsComponent
+        CostsComponent,
+        CostsWidgetComponent
     ],
     imports: [
         BrowserModule,
@@ -44,13 +48,15 @@ import 'hammerjs';
         BrowserAnimationsModule,
         ReactiveFormsModule,
         MdMenuModule,
+        MdTabsModule,
         MdButtonModule,
         MdIconModule,
         MdGridListModule,
         MdCardModule,
         MdInputModule,
         routing,
-        SimpleNotificationsModule.forRoot()
+        SimpleNotificationsModule.forRoot(),
+        ChartsModule
     ],
     providers: [
         AuthGuard,
