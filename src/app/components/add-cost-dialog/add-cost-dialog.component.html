@@ -3,7 +3,6 @@
         <p>Добавить операцию</p>
     </div>
     <form [formGroup]="addCostForm" (ngSubmit)="addNewCost()">
-
         <table cellpadding="0">
             <tr>
                 <td>
@@ -42,7 +41,6 @@
                 </td>
             </tr>
         </table>
-
         <button md-mini-fab class="add-cost-dialog-submit" [disabled]="!addCostForm.valid">
             <md-icon>check</md-icon>
         </button>
