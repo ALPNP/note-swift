@@ -15,7 +15,8 @@ export class RootService {
         this.baseUrl = 'http://localhost:8080/api';
     }
 
-    put(data) {
+    create(data: any, url: string) {
+        let body = JSON.stringify(data);
         console.log(data);
     }
 }

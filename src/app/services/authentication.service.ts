@@ -28,7 +28,7 @@ export class AuthenticationService extends RootService {
                 let token = res.json() && res.json().token;
                 if (token) {
                     localStorage.setItem('token', token);
-                    this.setUserName(token);
+                    this.setCurrentUser(token);
                     return true;
                 } else {
                     console.log(res.json());
@@ -40,14 +40,24 @@ export class AuthenticationService extends RootService {
             });
     }
 
-    private setUserName(token: string): void {
+    private setCurrentUser(token: string): void {
         let decodedPayload = this.jwtHelper.decodeToken(token);
+        console.log(decodedPayload['_doc']);
         this.username = decodedPayload['_doc']['name'];
+        let currentUser: any = {
+            username: this.username
+        };
+        localStorage.setItem('currentUser', JSON.stringify(currentUser));
     }
 
-    private deleteAuthData(): void {
+    private removeCurrentUser(): void {
         this.username = null;
+        localStorage.removeItem('currentUser');
+    }
+
+    public deleteAuthData(): void {
         localStorage.removeItem('token');
+        this.removeCurrentUser();
     }
 
     public logOut() {

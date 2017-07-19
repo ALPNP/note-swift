@@ -14,4 +14,7 @@ export class CostsService extends RootService {
         super(http);
     }
 
+    public addCost(model: any) {
+        console.log(model);
+    }
 }
