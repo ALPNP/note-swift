@@ -1,0 +1,50 @@
+<div class="add-cost-dialog">
+    <div class="add-cost-dialog-header">
+        <p>Добавить операцию</p>
+    </div>
+    <form [formGroup]="addCostForm" (ngSubmit)="addNewCost()">
+
+        <table cellpadding="0">
+            <tr>
+                <td>
+                    <md-input-container>
+                        <input mdInput
+                               [(ngModel)]="cost.date"
+                               [mdDatepicker]="picker"
+                               formControlName="date"
+                               placeholder="Выберите дату операции">
+                        <button mdSuffix [mdDatepickerToggle]="picker"></button>
+                    </md-input-container>
+                    <md-datepicker #picker></md-datepicker>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <md-select class="full-width"
+                               [(ngModel)]="cost.type"
+                               formControlName="type"
+                               placeholder="Статья">
+                        <md-option *ngFor="let costType of costTypes" [value]="costType">
+                            {{costType}}
+                        </md-option>
+                    </md-select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <md-input-container class="full-width">
+                        <input mdInput
+                               [(ngModel)]="cost.amount"
+                               formControlName="amount"
+                               type="number"
+                               placeholder="Сумма">
+                    </md-input-container>
+                </td>
+            </tr>
+        </table>
+
+        <button md-mini-fab class="add-cost-dialog-submit" [disabled]="!addCostForm.valid">
+            <md-icon>check</md-icon>
+        </button>
+    </form>
+</div>

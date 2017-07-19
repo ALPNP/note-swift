@@ -14,7 +14,6 @@ import {NotificationsService} from "angular2-notifications/dist";
 export class LoginComponent implements OnInit{
     loginForm: FormGroup;
     model: any = {};
-    loading = false;
 
     public options = {
         position: ["bottom", "right"],
@@ -35,7 +34,6 @@ export class LoginComponent implements OnInit{
     }
 
     login() {
-        this.loading = true;
         this.authenticationService.login(this.model.name, this.model.password).subscribe(
             data => {
                 if (data) {
@@ -46,7 +44,7 @@ export class LoginComponent implements OnInit{
                 }
             },
             error => console.log(error),
-            () => this.loading = false
+            () => {}
         );
     }
 }
