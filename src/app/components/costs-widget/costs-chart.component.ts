@@ -1,11 +1,11 @@
 import {Component} from '@angular/core';
 
 @Component({
-    selector: 'costs-widget',
-    templateUrl: './costs-widget.component.html',
-    styleUrls: ['./costs-widget.component.scss']
+    selector: 'costs-chart',
+    templateUrl: 'costs-chart.component.html',
+    styleUrls: ['costs-chart.component.scss']
 })
-export class CostsWidgetComponent{
+export class CostsChartComponent{
     public barChartOptions:any = {
         scaleShowVerticalLines: false,
         responsive: true
