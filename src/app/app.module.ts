@@ -20,7 +20,8 @@ import {
     MdDatepickerModule,
     MdNativeDateModule,
     MdSelectModule,
-    MdToolbarModule
+    MdToolbarModule,
+    MdProgressSpinnerModule
 } from '@angular/material';
 
 import {AuthModule} from './modules';
@@ -43,6 +44,7 @@ import {AddCostDialogComponent} from "./components/add-cost-dialog/add-cost-dial
 import {routing} from './app.routing';
 
 import 'hammerjs';
+import {Spinner} from "./components/spinner/spinner.component";
 
 @NgModule({
     declarations: [
@@ -55,10 +57,12 @@ import 'hammerjs';
         CostsChartComponent,
         AddCostComponent,
         CostsListComponent,
-        AddCostDialogComponent
+        AddCostDialogComponent,
+        Spinner
     ],
     entryComponents: [
-        AddCostDialogComponent
+        AddCostDialogComponent,
+        Spinner
     ],
     imports: [
         BrowserModule,
@@ -75,6 +79,7 @@ import 'hammerjs';
         MdInputModule,
         MdTooltipModule,
         MdDialogModule,
+        MdProgressSpinnerModule,
         MdToolbarModule,
         MdDatepickerModule,
         MdNativeDateModule,

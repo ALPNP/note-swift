@@ -1,4 +1,7 @@
 <div class="add-cost-dialog">
+    <div class="add-cost-dialog-spinner-container">
+        <spinner class="add-cost-dialog-spinner" [hidden]="!loading" [strokeWidth]="strokeWidth" [width]="spinnerWidth" [height]="spinnerHeight"></spinner>
+    </div>
     <div class="add-cost-dialog-header">
         <p>Добавить операцию</p>
     </div>
@@ -41,7 +44,7 @@
                 </td>
             </tr>
         </table>
-        <button md-mini-fab class="add-cost-dialog-submit" [disabled]="!addCostForm.valid">
+        <button md-mini-fab class="add-cost-dialog-submit" [disabled]="!addCostForm.valid || loading">
             <md-icon>check</md-icon>
         </button>
     </form>
