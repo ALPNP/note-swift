@@ -6,7 +6,7 @@ import {Router} from "@angular/router";
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
-import {JwtHelper, tokenNotExpired} from "angular2-jwt";
+import {JwtHelper, tokenNotExpired, AuthHttp} from "angular2-jwt";
 import {RootService} from "./root.service";
 
 @Injectable()
@@ -16,8 +16,9 @@ export class AuthenticationService extends RootService {
     jwtHelper: JwtHelper = new JwtHelper();
 
     constructor(protected http: Http,
-                protected router: Router) {
-        super(http);
+                protected router: Router,
+                protected authHttp: AuthHttp) {
+        super(authHttp);
     }
 
     public login(name: string, password: string): Observable<any> {

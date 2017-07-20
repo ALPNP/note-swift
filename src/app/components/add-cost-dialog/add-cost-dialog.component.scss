@@ -2,3 +2,12 @@
     margin-top: 5px;
     float: right;
 }
+
+.add-cost-dialog-spinner-container {
+    position: relative;
+    .add-cost-dialog-spinner{
+        position: absolute;
+        bottom: -30px;
+        right: 0px;
+    }
+}

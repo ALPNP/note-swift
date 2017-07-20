@@ -9,7 +9,9 @@ import {NotificationsService} from "angular2-notifications/dist";
     selector: 'login',
     templateUrl: 'login.component.html',
     styleUrls: ['login.component.scss'],
-    providers: [AuthenticationService]
+    providers: [
+        AuthenticationService
+    ]
 })
 export class LoginComponent implements OnInit{
     loginForm: FormGroup;
