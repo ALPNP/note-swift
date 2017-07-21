@@ -1,4 +1,4 @@
-import {Component, OnInit} from "@angular/core";
+import {Component, OnInit, Input, EventEmitter} from "@angular/core";
 import {CostsService} from "../../services/costs.service";
 
 @Component({
@@ -7,22 +7,23 @@ import {CostsService} from "../../services/costs.service";
     styleUrls: ['./costs-list.component.scss'],
     providers: [CostsService]
 })
-export class CostsListComponent implements OnInit{
+export class CostsListComponent implements OnInit {
 
-    costs: any[] = [];
+
+    costs: any;
 
     constructor(private costsService: CostsService) {
 
     }
 
     ngOnInit() {
-        this.getCosts({search: 'k'});
+        this.getCosts();
     }
 
     getCosts(options?: any) {
         this.costsService.getCosts(options).subscribe(
             data => {
-                console.log(data);
+                this.costs = data;
             },
             err => {
                 console.log(err);

@@ -4,8 +4,13 @@
         <md-card-subtitle></md-card-subtitle>
     </md-card-header>
     <md-card-content>
-        <div class="">
-            test
-        </div>
+        <md-list>
+            <md-list-item *ngFor="let cost of costs">
+                <md-icon md-list-icon>{{cost.type}}</md-icon>
+                <h4 md-line>{{cost.amount}} &#8381;</h4>
+                <p md-line>{{cost.formatDate}}</p>
+            </md-list-item>
+            <md-divider></md-divider>
+        </md-list>
     </md-card-content>
 </md-card>

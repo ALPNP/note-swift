@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, Output, EventEmitter} from '@angular/core';
 import {MdDialog} from '@angular/material';
 import {AddCostDialogComponent} from "../add-cost-dialog/add-cost-dialog.component";
 import {NotificationsService} from "angular2-notifications/dist";
@@ -10,6 +10,9 @@ import {NotificationsService} from "angular2-notifications/dist";
     styleUrls: ['./add-cost.component.scss']
 })
 export class AddCostComponent {
+
+    @Output() costAdded = new EventEmitter<boolean>();
+
     constructor(public dialog: MdDialog,
                 private notificationsService: NotificationsService) {
     }
@@ -24,6 +27,7 @@ export class AddCostComponent {
         let dialogRef = this.dialog.open(AddCostDialogComponent);
         dialogRef.afterClosed().subscribe(result => {
             if (typeof result === 'boolean' && result) {
+                this.costAdded.emit(result);
                 this.notificationsService.success('Успех', 'Операция сохранена');
             } else if (result && !result['ok']) {
                 this.notificationsService.error('Ошибка', 'Операция не сохранена');

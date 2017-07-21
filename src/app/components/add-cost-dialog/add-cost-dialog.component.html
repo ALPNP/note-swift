@@ -17,7 +17,7 @@
                                placeholder="Выберите дату операции">
                         <button mdSuffix [mdDatepickerToggle]="picker"></button>
                     </md-input-container>
-                    <md-datepicker #picker></md-datepicker>
+                    <md-datepicker touchUi="true" #picker></md-datepicker>
                 </td>
             </tr>
             <tr>
@@ -26,8 +26,8 @@
                                [(ngModel)]="cost.type"
                                formControlName="type"
                                placeholder="Статья">
-                        <md-option *ngFor="let costType of costTypes" [value]="costType">
-                            {{costType}}
+                        <md-option *ngFor="let costType of costTypes" [value]="costType.icon">
+                            {{costType.name}}
                         </md-option>
                     </md-select>
                 </td>
