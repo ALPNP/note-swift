@@ -20,11 +20,17 @@ export class AddCostDialogComponent implements OnInit{
     loading: boolean = false;
     addCostForm: FormGroup;
     cost: Cost = new Cost();
-    costTypes: string[] = [
-        'Доход',
-        'Расход',
-        'Непредвиденные расходы',
-        'Непредвиденные доходы'
+    costTypes: any[] = [
+        {
+            id: 0,
+            name: 'Доход',
+            icon: 'add'
+        },
+        {
+            id: 1,
+            name: 'Расход',
+            icon: 'remove'
+        }
     ];
 
     constructor(public dialogRef: MdDialogRef<AddCostDialogComponent>,
@@ -44,7 +50,6 @@ export class AddCostDialogComponent implements OnInit{
 
     addNewCost() {
         this.loading = true;
-        console.log(this.cost);
         this.costsService.addNewCost(this.cost).subscribe(
             data => {
                 this.dialogRef.close(data['success']);

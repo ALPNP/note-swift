@@ -21,7 +21,9 @@ import {
     MdNativeDateModule,
     MdSelectModule,
     MdToolbarModule,
-    MdProgressSpinnerModule
+    MdProgressSpinnerModule,
+    MdTableModule,
+    MdListModule
 } from '@angular/material';
 
 import {AuthModule} from './modules';
@@ -75,10 +77,12 @@ import {Spinner} from "./components/spinner/spinner.component";
         MdButtonModule,
         MdIconModule,
         MdGridListModule,
+        MdListModule,
         MdCardModule,
         MdInputModule,
         MdTooltipModule,
         MdDialogModule,
+        MdTableModule,
         MdProgressSpinnerModule,
         MdToolbarModule,
         MdDatepickerModule,
