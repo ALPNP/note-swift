@@ -15,7 +15,7 @@ export class CostsService extends RootService {
 
     constructor(authHttp: AuthHttp) {
         super(authHttp);
-        this.restUrl = 'costs';
+        this.restUrl = 'api/costs';
     }
 
     addNewCost(item: any): Observable<boolean> {
@@ -24,5 +24,9 @@ export class CostsService extends RootService {
 
     getCosts(options?: any): Observable<boolean> {
         return this.fetch(options, this.restUrl);
+    }
+
+    getCostsChart(options?: any): Observable<boolean> {
+        return this.fetch(options, `${this.restUrl}/chart`);
     }
 }

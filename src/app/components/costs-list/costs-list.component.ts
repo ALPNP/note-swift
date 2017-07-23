@@ -9,7 +9,6 @@ import {CostsService} from "../../services/costs.service";
 })
 export class CostsListComponent implements OnInit {
 
-
     costs: any;
 
     constructor(private costsService: CostsService) {

@@ -13,7 +13,7 @@ export class RootService {
     baseUrl: string;
 
     constructor(protected authHttp: AuthHttp) {
-        this.baseUrl = 'http://localhost:8080/api';
+        this.baseUrl = 'http://localhost:8080/';
     }
 
     create(item) {
@@ -24,7 +24,7 @@ export class RootService {
         const body = JSON.stringify(item);
         let headers = new Headers({'Content-Type': 'application/json;charset=utf-8'});
 
-        return this.authHttp.post(`${this.baseUrl}/${restUrl}`, body, {headers: headers})
+        return this.authHttp.post(`${this.baseUrl}${restUrl}`, body, {headers: headers})
             .map((res: Response) => {
                 return res.json();
             })
@@ -41,7 +41,7 @@ export class RootService {
         }
         //////////////////////////
 
-        return this.authHttp.get(`${this.baseUrl}/${restUrl}`, {search: searchParams})
+        return this.authHttp.get(`${this.baseUrl}${restUrl}`, {search: searchParams})
             .map((res: Response) => {
                 let data = res.json()['content'];
                 return data;
