@@ -38,7 +38,7 @@ import {CalendarComponent} from './components/calendar/calendar.component';
 import {DashboardComponent} from './components/dashboard/dashboard.component';
 import {LoginComponent} from './components/login/login.component';
 import {CostsComponent} from "./components/costs/costs.component";
-import {CostsChartComponent} from "./components/costs-widget/costs-chart.component";
+import {CostsChartComponent} from "./components/costs-chart/costs-chart.component";
 import {AddCostComponent} from './components/add-cost/add-cost.component';
 import {CostsListComponent} from "./components/costs-list/costs-list.component";
 import {AddCostDialogComponent} from "./components/add-cost-dialog/add-cost-dialog.component";

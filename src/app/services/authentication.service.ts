@@ -24,7 +24,7 @@ export class AuthenticationService extends RootService {
     public login(name: string, password: string): Observable<any> {
         const body = 'name=' + name + '&password=' + password;
         let headers = new Headers({'Content-Type': 'application/x-www-form-urlencoded'});
-        return this.http.post(`${this.baseUrl}/auth`, body, {headers: headers})
+        return this.http.post(`${this.baseUrl}auth`, body, {headers: headers})
             .map((res: Response) => {
                 let token = res.json() && res.json().token;
                 if (token) {
