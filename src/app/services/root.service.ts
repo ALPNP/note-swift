@@ -1,9 +1,10 @@
 import {Injectable} from '@angular/core';
-import {URLSearchParams} from '@angular/http';
+import {URLSearchParams, RequestOptions} from '@angular/http';
 import {Response, Headers} from '@angular/http';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/finally';
 import 'rxjs/add/observable/throw';
 import {AuthHttp} from "angular2-jwt";
 
@@ -44,6 +45,23 @@ export class RootService {
         return this.authHttp.get(`${this.baseUrl}${restUrl}`, {search: searchParams})
             .map((res: Response) => {
                 return res.json()['content'];
+            })
+            .catch((err: any) => {
+                return Observable.throw(err);
+            });
+    }
+
+    remove(item: any, restUrl?: string) {
+        let body = JSON.stringify(item);
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        let options = new RequestOptions({
+            headers: headers,
+            body: body
+        });
+
+        return this.authHttp.delete(`${this.baseUrl}${restUrl}`, options)
+            .map((res: Response) => {
+                return res.json();
             })
             .catch((err: any) => {
                 return Observable.throw(err);

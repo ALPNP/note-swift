@@ -1,24 +1,27 @@
 <div id="login-page">
-    <div id="login-layout">
-        <div id="login-header">
-            <h4>Note Swift</h4>
+    <div id="login-layout-host">
+        <div id="login-layout">
+            <div id="login-header">
+                <h4>Note Swift</h4>
+            </div>
+            <form [formGroup]="loginForm" (ngSubmit)="login()" id="login-form">
+                <md-input-container>
+                    <input mdInput formControlName="name"
+                           [(ngModel)]="model.name"
+                           placeholder="Логин">
+                </md-input-container>
+                <md-input-container>
+                    <input mdInput formControlName="password"
+                           type="password"
+                           [(ngModel)]="model.password"
+                           placeholder="Пароль">
+                </md-input-container>
+                <br>
+                <button md-button
+                        [disabled]="!loginForm.valid">Войти
+                </button>
+            </form>
         </div>
-        <form [formGroup]="loginForm" (ngSubmit)="login()" id="login-form">
-            <md-input-container>
-                <input mdInput formControlName="name"
-                       [(ngModel)]="model.name"
-                       placeholder="Логин">
-            </md-input-container>
-            <md-input-container>
-                <input mdInput formControlName="password"
-                       type="password"
-                       [(ngModel)]="model.password"
-                       placeholder="Пароль">
-            </md-input-container>
-            <br>
-            <button md-button
-                    [disabled]="!loginForm.valid">Войти</button>
-        </form>
     </div>
     <simple-notifications [options]="options"></simple-notifications>
 </div>

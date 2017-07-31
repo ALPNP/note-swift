@@ -1,8 +1,24 @@
+@import "../../../assets/scss/palette";
+
+#login-page {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: $primary-color-light;
+    z-index: 2;
+    cursor: pointer;
+}
+
+#login-layout-host {
+    margin-top: 10%;
+}
+
 #login-layout {
     width: 250px;
     height: 250px;
     margin: 0 auto;
-    border: solid 1px blue;
     border-radius: 15px;
     padding: 7px;
     text-align: center;
@@ -12,3 +28,5 @@
 #login-header {
     text-align: center;
 }
+
+

@@ -3,7 +3,7 @@
         <h3>Финансы</h3>
     </md-card>
     <div class="app-content">
-        <costs-list></costs-list>
+        <costs-list (costDeleted)="costDeleted($event)"></costs-list>
         <costs-chart></costs-chart>
     </div>
     <div class="app-actions">

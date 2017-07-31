@@ -5,12 +5,25 @@
     </md-card-header>
     <md-card-content>
         <md-list>
+            <md-list-item *ngIf="costs['length'] === 0">
+                <md-icon md-list-icon>cancel</md-icon>
+                <h4 md-line>За текущий период нет операций</h4>
+            </md-list-item>
             <md-list-item *ngFor="let cost of costs">
                 <md-icon md-list-icon>{{cost.type}}</md-icon>
                 <h4 md-line>{{cost.amount}} &#8381;</h4>
                 <p md-line>{{cost.formatDate}}</p>
+                <div class="costs-list-actions">
+                    <button md-icon-button mdTooltip="Удалить" [mdTooltipPosition]="'above'" (click)="deleteCost($event, cost['_id'])" class="active-chart">
+                        <md-icon>
+                            delete
+                        </md-icon>
+                    </button>
+                </div>
             </md-list-item>
-            <md-divider></md-divider>
+            <!--<md-divider>-->
+            <!--</md-divider>-->
         </md-list>
     </md-card-content>
+    <simple-notifications [options]="notifyOptions"></simple-notifications>
 </md-card>

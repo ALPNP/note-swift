@@ -9,9 +9,7 @@ import {NotificationsService} from "angular2-notifications/dist";
     selector: 'login',
     templateUrl: 'login.component.html',
     styleUrls: ['login.component.scss'],
-    providers: [
-        AuthenticationService
-    ]
+    providers: [AuthenticationService]
 })
 export class LoginComponent implements OnInit{
     loginForm: FormGroup;
@@ -33,6 +31,16 @@ export class LoginComponent implements OnInit{
             name: new FormControl('', Validators.required),
             password: new FormControl('', Validators.required)
         });
+
+        this.isLoggedIn();
+    }
+
+    isLoggedIn() {
+        if (this.authenticationService.isLoggedIn()) {
+            if (this.router.url === '/login') {
+                this.router.navigate(['/dashboard']);
+            }
+        }
     }
 
     login() {
