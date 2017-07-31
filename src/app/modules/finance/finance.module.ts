@@ -19,6 +19,7 @@ import {
     MdDatepickerModule,
     MdNativeDateModule,
     MdSelectModule,
+    MdGridListModule,
     MdProgressSpinnerModule,
     MdListModule
 } from '@angular/material';
@@ -35,6 +36,7 @@ import {AddCostDialogComponent} from "./components/add-cost-dialog/add-cost-dial
         MdProgressSpinnerModule,
         MdButtonModule,
         MdDialogModule,
+        MdGridListModule,
         MdCardModule,
         MdInputModule,
         MdTooltipModule,

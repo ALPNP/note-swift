@@ -1,21 +1,23 @@
 <div *ngIf="chartDataSet" class="">
+    <p>Финансовый отчет с {{chartLabels[0]}} по {{chartLabels[chartLabels.length - 1]}}</p>
+    <p>Текущий интервал - {{intervalViewName}}.</p>
     <div class="chart-switch-container">
-        <button md-icon-button (click)="switchChart('line')">
+        <button md-icon-button mdTooltip="Линейный график" [mdTooltipPosition]="'above'" (click)="switchChart('line')">
             <md-icon>
                 show_chart
             </md-icon>
         </button>
-        <button md-icon-button (click)="switchChart('bar')" class="active-chart">
+        <button md-icon-button mdTooltip="Гистограмма" [mdTooltipPosition]="'above'" (click)="switchChart('bar')" class="active-chart">
             <md-icon>
                 insert_chart
             </md-icon>
         </button>
     </div>
-    <div style="display: block;">
+    <div style="display: flex;">
         <canvas baseChart
                 [datasets]="chartData"
                 [labels]="chartLabels"
-                [options]="chartOptions"
+                [options]="{}"
                 [legend]="chartLegend"
                 [chartType]="chartType"
                 (chartHover)="chartHovered($event)"

@@ -10,6 +10,8 @@ export class CostsChartLayoutComponent {
     @Output() chartClick = new EventEmitter<boolean>();
     @Output() chartHover = new EventEmitter<boolean>();
 
+    public intervalViewName: string = 'последние 7 дней';
+
     public chartDataSet: boolean = false;
     public chartData: Array<any> = [{data: []}];
     public chartLabels: Array<any> = [];
