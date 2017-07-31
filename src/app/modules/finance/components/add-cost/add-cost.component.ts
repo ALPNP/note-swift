@@ -1,13 +1,13 @@
 import {Component, Output, EventEmitter} from '@angular/core';
 import {MdDialog} from '@angular/material';
-import {AddCostDialogComponent} from "../add-cost-dialog/add-cost-dialog.component";
 import {NotificationsService} from "angular2-notifications/dist";
+import {AddCostDialogComponent} from "../add-cost-dialog/add-cost-dialog.component";
 
 
 @Component({
     selector: 'add-cost',
-    templateUrl: './add-cost.component.html',
-    styleUrls: ['./add-cost.component.scss']
+    templateUrl: 'add-cost.component.html',
+    styleUrls: ['add-cost.component.scss']
 })
 export class AddCostComponent {
 

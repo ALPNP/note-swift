@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Http, URLSearchParams} from '@angular/http';
+import {URLSearchParams} from '@angular/http';
 import {Response, Headers} from '@angular/http';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
@@ -43,8 +43,7 @@ export class RootService {
 
         return this.authHttp.get(`${this.baseUrl}${restUrl}`, {search: searchParams})
             .map((res: Response) => {
-                let data = res.json()['content'];
-                return data;
+                return res.json()['content'];
             })
             .catch((err: any) => {
                 return Observable.throw(err);

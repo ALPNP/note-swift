@@ -1,13 +1,13 @@
 import {Component, OnInit} from "@angular/core";
 import {MdDialogRef} from "@angular/material";
 import {FormGroup, FormControl, Validators} from "@angular/forms";
-import {CostsService} from "../../services/costs.service";
 import {Cost} from "../../models/cost.model";
+import {CostsService} from "../../services/costs.service";
 
 @Component({
     selector: 'add-cost-dialog',
-    templateUrl: './add-cost-dialog.component.html',
-    styleUrls: ['./add-cost-dialog.component.scss'],
+    templateUrl: 'add-cost-dialog.component.html',
+    styleUrls: ['add-cost-dialog.component.scss'],
     providers: [
         CostsService
     ]

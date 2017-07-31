@@ -1,7 +1,8 @@
-.app-content{
+.app-content {
     display: flex;
-    flex-flow: row nowrap;
+    flex-flow: row;
     justify-content: space-around;
     align-content: stretch;
     align-items: stretch;
+    //float: left;
 }
