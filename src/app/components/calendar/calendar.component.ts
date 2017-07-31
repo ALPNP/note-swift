@@ -6,7 +6,8 @@ import {Utilities} from '../../utilities/utilities';
 
 @Component({
     selector: 'calendar',
-    templateUrl: 'calendar.component.html'
+    templateUrl: 'calendar.component.html',
+    styleUrls: ['./calendar.component.scss']
 })
 export class CalendarComponent implements OnInit{
 

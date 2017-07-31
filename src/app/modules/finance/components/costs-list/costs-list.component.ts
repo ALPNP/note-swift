@@ -1,10 +1,10 @@
 import {Component, OnInit} from "@angular/core";
-import {CostsService} from "../../services/costs.service";
+import {CostsService} from "./../../services/costs.service";
 
 @Component({
     selector: 'costs-list',
-    templateUrl: './costs-list.component.html',
-    styleUrls: ['./costs-list.component.scss'],
+    templateUrl: 'costs-list.component.html',
+    styleUrls: ['costs-list.component.scss'],
     providers: [CostsService]
 })
 export class CostsListComponent implements OnInit {
