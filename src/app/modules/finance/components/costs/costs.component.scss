@@ -1,8 +1,17 @@
 .app-content {
-    display: flex;
-    flex-flow: row;
-    justify-content: space-around;
-    align-content: stretch;
-    align-items: stretch;
-    //float: left;
+    display: grid;
+    margin-top: 7px;
+    grid-template-columns: auto 2fr;
+
+    * {
+
+    }
+
+    *:nth-child(even) {
+        margin-left: 7px;
+    }
+
+    *:last-child {
+
+    }
 }
