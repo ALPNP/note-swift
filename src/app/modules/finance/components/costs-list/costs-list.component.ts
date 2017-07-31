@@ -1,5 +1,6 @@
-import {Component, OnInit} from "@angular/core";
+import {Component, OnInit, Output, EventEmitter} from "@angular/core";
 import {CostsService} from "./../../services/costs.service";
+import {NotificationsService} from "angular2-notifications/dist";
 
 @Component({
     selector: 'costs-list',
@@ -9,10 +10,18 @@ import {CostsService} from "./../../services/costs.service";
 })
 export class CostsListComponent implements OnInit {
 
-    costs: any;
+    @Output() costDeleted = new EventEmitter<boolean>();
 
-    constructor(private costsService: CostsService) {
+    costs: any = [];
 
+    notifyOptions: any = {
+        position: ["bottom", "right"],
+        timeOut: 3000,
+        lastOnBottom: true
+    };
+
+    constructor(private costsService: CostsService,
+                private notificationsService: NotificationsService) {
     }
 
     ngOnInit() {
@@ -28,5 +37,24 @@ export class CostsListComponent implements OnInit {
                 console.log(err);
             }
         )
+    }
+
+    deleteCost(e, id: string) {
+        let curTar = e.currentTarget;
+        curTar.disabled = true;
+
+        this.costsService.deleteCost(id)
+            .finally(() => {
+                curTar.disabled = false
+            })
+            .subscribe(
+                data => {
+                    this.notificationsService.success('Успех', 'Операция удалена');
+                    this.costDeleted.emit();
+                },
+                err => {
+                    this.notificationsService.error('Ошибка', 'Удалить операцию не удалось');
+                }
+            );
     }
 }

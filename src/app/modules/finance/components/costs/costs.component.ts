@@ -16,4 +16,9 @@ export class CostsComponent {
         this.costsListComponent.getCosts();
         this.costsChartComponent.getChart();
     }
+
+    costDeleted(e: any) {
+        this.costsListComponent.getCosts();
+        this.costsChartComponent.getChart();
+    }
 }
