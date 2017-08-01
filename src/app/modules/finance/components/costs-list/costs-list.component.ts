@@ -1,6 +1,8 @@
 import {Component, OnInit, Output, EventEmitter} from "@angular/core";
-import {CostsService} from "./../../services/costs.service";
+import {CostsService} from "../../services/costs.service";
 import {NotificationsService} from "angular2-notifications/dist";
+import {EditCostDialogComponent} from "../edit-cost-dialog/edit-cost-dialog.component";
+import {MdDialog, MdDialogConfig} from "@angular/material";
 
 @Component({
     selector: 'costs-list',
@@ -11,8 +13,10 @@ import {NotificationsService} from "angular2-notifications/dist";
 export class CostsListComponent implements OnInit {
 
     @Output() costDeleted = new EventEmitter<boolean>();
+    @Output() costEdited = new EventEmitter<boolean>();
 
     costs: any = [];
+    costsLoaded: boolean = false;
 
     notifyOptions: any = {
         position: ["bottom", "right"],
@@ -21,7 +25,8 @@ export class CostsListComponent implements OnInit {
     };
 
     constructor(private costsService: CostsService,
-                private notificationsService: NotificationsService) {
+                private notificationsService: NotificationsService,
+                public dialog: MdDialog) {
     }
 
     ngOnInit() {
@@ -32,6 +37,7 @@ export class CostsListComponent implements OnInit {
         this.costsService.getCosts(options).subscribe(
             data => {
                 this.costs = data;
+                this.costsLoaded = true;
             },
             err => {
                 console.log(err);
@@ -39,22 +45,24 @@ export class CostsListComponent implements OnInit {
         )
     }
 
-    deleteCost(e, id: string) {
-        let curTar = e.currentTarget;
-        curTar.disabled = true;
+    editCost(cost){
+        const config = new MdDialogConfig();
+        config.data = cost;
+        let dialogRef = this.dialog.open(EditCostDialogComponent, config);
+        dialogRef.afterClosed().subscribe(result => {
+            console.log(result);
+            this.costEdited.emit();
+            if (typeof result === 'boolean' && result) {
+                this.notificationsService.success('Успех', 'Операция удалена');
+            } else if (result && !result['ok']) {
+                this.notificationsService.error('Ошибка', '');
+            } else if (result === false) {
+                this.notificationsService.error('Ошибка', 'Операция не удалена');
+            }else if (typeof result === 'undefined') {
+                // maybe need tomorrow
+            } else {
 
-        this.costsService.deleteCost(id)
-            .finally(() => {
-                curTar.disabled = false
-            })
-            .subscribe(
-                data => {
-                    this.notificationsService.success('Успех', 'Операция удалена');
-                    this.costDeleted.emit();
-                },
-                err => {
-                    this.notificationsService.error('Ошибка', 'Удалить операцию не удалось');
-                }
-            );
+            }
+        });
     }
 }

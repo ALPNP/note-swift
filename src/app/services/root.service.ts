@@ -67,4 +67,20 @@ export class RootService {
                 return Observable.throw(err);
             });
     }
+
+    update(item: any, restUrl?: string) {
+        let body = JSON.stringify(item);
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        let options = new RequestOptions({
+            headers: headers
+        });
+
+        return this.authHttp.put(`${this.baseUrl}${restUrl}`, body, options)
+            .map((res: Response) => {
+                return res.json();
+            })
+            .catch((err: any) => {
+                return Observable.throw(err);
+            })
+    }
 }

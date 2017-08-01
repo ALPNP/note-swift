@@ -26,6 +26,7 @@ import {
 import {CommonModule} from "@angular/common";
 import {ReactiveFormsModule} from "@angular/forms";
 import {AddCostDialogComponent} from "./components/add-cost-dialog/add-cost-dialog.component";
+import {EditCostDialogComponent} from "./components/edit-cost-dialog/edit-cost-dialog.component";
 
 @NgModule({
     imports: [
@@ -62,12 +63,14 @@ import {AddCostDialogComponent} from "./components/add-cost-dialog/add-cost-dial
         CostsListComponent,
         CostsChartComponent,
         Spinner,
-        AddCostDialogComponent
+        AddCostDialogComponent,
+        EditCostDialogComponent
     ],
     entryComponents: [
         Spinner,
         AddCostComponent,
-        AddCostDialogComponent
+        AddCostDialogComponent,
+        EditCostDialogComponent
     ],
     providers: [
         CostsService

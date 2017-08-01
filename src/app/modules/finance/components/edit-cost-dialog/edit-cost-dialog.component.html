@@ -1,11 +1,11 @@
-<div class="add-cost-dialog">
-    <div class="add-cost-dialog-spinner-container">
-        <spinner class="add-cost-dialog-spinner" [hidden]="!loading" [strokeWidth]="strokeWidth" [width]="spinnerWidth" [height]="spinnerHeight"></spinner>
+<div class="edit-cost-dialog">
+    <div class="edit-cost-dialog-spinner-container">
+        <spinner class="edit-cost-dialog-spinner" [hidden]="!loading" [strokeWidth]="strokeWidth" [width]="spinnerWidth" [height]="spinnerHeight"></spinner>
     </div>
-    <div class="add-cost-dialog-header">
+    <div class="edit-cost-dialog-header">
         <p>Добавить операцию</p>
     </div>
-    <form [formGroup]="addCostForm" (ngSubmit)="addNewCost()">
+    <form [formGroup]="editCostForm" (ngSubmit)="updateCost(cost)">
         <table cellpadding="0">
             <tr>
                 <td>
@@ -55,8 +55,15 @@
                 </td>
             </tr>
         </table>
-        <button md-raised-button color="primary" class="add-cost-dialog-submit" [disabled]="!addCostForm.valid || loading">
-            <md-icon>check</md-icon>
+
+        <button md-raised-button color="primary" class="edit-cost-dialog-submit" [disabled]="!editCostForm.valid || loading">
+            <md-icon>save</md-icon>
+        </button>
+        <button md-raised-button color="warn" (click)="deleteCost($event, cost['_id'])" [disabled]="loading" class="edit-cost-dialog-delete">
+            <md-icon>
+                delete
+            </md-icon>
         </button>
     </form>
+    <simple-notifications [options]="notifyOptions"></simple-notifications>
 </div>
