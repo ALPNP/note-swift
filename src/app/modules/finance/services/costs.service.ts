@@ -20,6 +20,10 @@ export class CostsService extends RootService {
         return this.push(item, this.restUrl);
     }
 
+    updateCost(item: any): Observable<boolean> {
+        return this.update(item, this.restUrl);
+    }
+
     getCosts(options?: any): Observable<boolean> {
         return this.fetch(options, this.restUrl);
     }

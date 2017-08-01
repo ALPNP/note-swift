@@ -9,15 +9,19 @@ import {CostsListComponent} from "../costs-list/costs-list.component";
 })
 export class CostsComponent {
 
+    constructor(){
+    }
+
+    public options = {
+        position: ["bottom", "right"],
+        timeOut: 3000,
+        lastOnBottom: true
+    };
+
     @ViewChild(CostsListComponent) private costsListComponent: CostsListComponent;
     @ViewChild(CostsChartComponent) private costsChartComponent: CostsChartComponent;
 
-    costAdded(e: any) {
-        this.costsListComponent.getCosts();
-        this.costsChartComponent.getChart();
-    }
-
-    costDeleted(e: any) {
+    requestModifiedData() {
         this.costsListComponent.getCosts();
         this.costsChartComponent.getChart();
     }

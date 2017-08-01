@@ -42,6 +42,7 @@ export class AddCostDialogComponent implements OnInit{
         this.spinnerWidth = '40px';
         this.spinnerHeight = '40px';
         this.addCostForm = new FormGroup({
+            description: new FormControl(''),
             date: new FormControl('', Validators.required),
             type: new FormControl('', Validators.required),
             amount: new FormControl('', Validators.required)
@@ -50,7 +51,9 @@ export class AddCostDialogComponent implements OnInit{
 
     addNewCost() {
         this.loading = true;
-        this.costsService.addNewCost(this.cost).subscribe(
+        this.costsService.addNewCost(this.cost)
+            .finally(() => this.loading = false)
+            .subscribe(
             data => {
                 this.dialogRef.close(data['success']);
             },

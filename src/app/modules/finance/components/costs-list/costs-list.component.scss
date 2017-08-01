@@ -1,5 +1,24 @@
-:host {
+@import "../../../../../assets/scss/palette";
 
+:host {
+}
+
+.costs-list-cost-description {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.costs-list-cost {
+
+    :first-child {
+        margin-top: 0;
+    }
+
+    margin-top: 3px;
+    cursor: pointer;
+    border: solid 1px $primary-color-light;
+    border-radius: 5px;
 }
 
 .costs-list {

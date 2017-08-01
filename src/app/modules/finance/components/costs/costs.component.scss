@@ -4,7 +4,9 @@
     grid-template-columns: auto 2fr;
 
     * {
+        :first-child {
 
+        }
     }
 
     *:nth-child(even) {

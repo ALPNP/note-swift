@@ -32,7 +32,6 @@ export class AuthenticationService extends RootService {
                     this.setCurrentUser(token);
                     return true;
                 } else {
-                    console.log(res.json());
                     return false;
                 }
             })
@@ -43,7 +42,6 @@ export class AuthenticationService extends RootService {
 
     private setCurrentUser(token: string): void {
         let decodedPayload = this.jwtHelper.decodeToken(token);
-        console.log(decodedPayload['_doc']);
         this.username = decodedPayload['_doc']['name'];
         let currentUser: any = {
             username: this.username
