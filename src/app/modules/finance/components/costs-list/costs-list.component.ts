@@ -45,23 +45,16 @@ export class CostsListComponent implements OnInit {
         )
     }
 
-    editCost(cost){
+    editCost(cost) {
         const config = new MdDialogConfig();
         config.data = cost;
         let dialogRef = this.dialog.open(EditCostDialogComponent, config);
         dialogRef.afterClosed().subscribe(result => {
-            console.log(result);
-            this.costEdited.emit();
-            if (typeof result === 'boolean' && result) {
-                this.notificationsService.success('Успех', 'Операция удалена');
-            } else if (result && !result['ok']) {
-                this.notificationsService.error('Ошибка', '');
+            if (result) {
+                this.costEdited.emit();
+                this.notificationsService.success('Успех', 'Изменения произведены');
             } else if (result === false) {
-                this.notificationsService.error('Ошибка', 'Операция не удалена');
-            }else if (typeof result === 'undefined') {
-                // maybe need tomorrow
-            } else {
-
+                this.notificationsService.error('Ошибка', 'Изминения не сохранены');
             }
         });
     }

@@ -1,16 +1,15 @@
-import {Component, OnInit, Inject, Optional, EventEmitter, Output} from "@angular/core";
+import {Component, OnInit, Inject, Optional} from "@angular/core";
 import {FormGroup, FormControl, Validators} from "@angular/forms";
 import {CostsService} from "../../services/costs.service";
 import {MdDialogRef, MD_DIALOG_DATA} from "@angular/material";
 import {Cost} from "../../models/cost.model";
-import {NotificationsService} from "angular2-notifications/dist";
 
 @Component({
     selector: 'edit-cost-dialog',
     templateUrl: './edit-cost-dialog.component.html',
     styleUrls: ['./edit-cost-dialog.component.scss']
 })
-export class EditCostDialogComponent implements OnInit{
+export class EditCostDialogComponent implements OnInit {
 
     cost: Cost;
 
@@ -46,24 +45,6 @@ export class EditCostDialogComponent implements OnInit{
 
     }
 
-    deleteCost(e, id: string) {
-        let curTar = e.currentTarget;
-        curTar.disabled = true;
-
-        this.costsService.deleteCost(id)
-            .finally(() => {
-                curTar.disabled = false
-            })
-            .subscribe(
-                data => {
-                    this.dialogRef.close(data['success']);
-                },
-                err => {
-                    this.dialogRef.close(err);
-                }
-            );
-    }
-
     ngOnInit() {
         this.strokeWidth = '15';
         this.spinnerWidth = '40px';
@@ -78,6 +59,31 @@ export class EditCostDialogComponent implements OnInit{
         this.cost = this.dialogData;
     }
 
+    deleteCost(e, id: string) {
+        let curTar = e.currentTarget;
+        curTar.disabled = true;
+
+        this.costsService.deleteCost(id)
+            .finally(() => {
+                curTar.disabled = false
+            })
+            .subscribe(
+                data => {
+                    if (data['success']) {
+                        this.dialogRef.close(true);
+                    }
+
+                    if (!data['success']) {
+                        this.dialogRef.close(false);
+                    }
+                },
+                err => {
+                    console.log(err);
+                    this.dialogRef.close(err);
+                }
+            );
+    }
+
     updateCost(cost) {
         this.loading = true;
         this.costsService.updateCost(cost)
@@ -86,12 +92,11 @@ export class EditCostDialogComponent implements OnInit{
             })
             .subscribe(
                 data => {
-                    console.log(data);
-                    // this.dialogRef.close(data['success']);
+                    this.dialogRef.close(true);
                 },
                 err => {
                     console.log(err);
-                    // this.dialogRef.close(err);
+                    this.dialogRef.close(false);
                 }
             );
     }
