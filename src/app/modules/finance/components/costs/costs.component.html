@@ -3,10 +3,10 @@
         <h3>Финансы</h3>
     </md-card>
     <div class="app-content">
-        <costs-list (costEdited)="requestModifiedData()" (costDeleted)="requestModifiedData($event)"></costs-list>
+        <costs-list (costEdited)="requestModifiedData()" (costDeleted)="requestModifiedData()"></costs-list>
         <costs-chart></costs-chart>
     </div>
     <div class="app-actions">
-        <add-cost (costAdded)="requestModifiedData($event)"></add-cost>
+        <add-cost (costAdded)="requestModifiedData()"></add-cost>
     </div>
 </div>
