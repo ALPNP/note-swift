@@ -2,6 +2,9 @@
     <md-card class="app-header">
         <h3>Финансы</h3>
     </md-card>
+    <div class="app-statistics">
+        <costs-statistic></costs-statistic>
+    </div>
     <div class="app-content">
         <costs-list (costEdited)="requestModifiedData()" (costDeleted)="requestModifiedData()"></costs-list>
         <costs-chart></costs-chart>
