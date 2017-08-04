@@ -8,7 +8,6 @@ import {CostsChartLayoutComponent} from "./components/costs-chart-layout/costs-c
 import {CostsListComponent} from "./components/costs-list/costs-list.component";
 import {CostsChartComponent} from "./components/costs-chart/costs-chart.component";
 import {CostsService} from "./services/costs.service";
-
 import {
     MdButtonModule,
     MdIconModule,
@@ -27,6 +26,7 @@ import {CommonModule} from "@angular/common";
 import {ReactiveFormsModule} from "@angular/forms";
 import {AddCostDialogComponent} from "./components/add-cost-dialog/add-cost-dialog.component";
 import {EditCostDialogComponent} from "./components/edit-cost-dialog/edit-cost-dialog.component";
+import {CostsStatisticComponent} from "./components/costs-statistic/costs-statistic.component";
 
 @NgModule({
     imports: [
@@ -53,7 +53,8 @@ import {EditCostDialogComponent} from "./components/edit-cost-dialog/edit-cost-d
         CostsComponent,
         CostsChartLayoutComponent,
         CostsListComponent,
-        CostsChartComponent
+        CostsChartComponent,
+        CostsStatisticComponent
     ],
     declarations: [
         CostsComponent,
@@ -64,7 +65,8 @@ import {EditCostDialogComponent} from "./components/edit-cost-dialog/edit-cost-d
         CostsChartComponent,
         Spinner,
         AddCostDialogComponent,
-        EditCostDialogComponent
+        EditCostDialogComponent,
+        CostsStatisticComponent
     ],
     entryComponents: [
         Spinner,
