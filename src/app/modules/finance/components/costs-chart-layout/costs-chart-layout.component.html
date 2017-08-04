@@ -1,4 +1,4 @@
-<div *ngIf="chartDataSet" class="">
+<div *ngIf="chartDataSet">
     <p>Финансовый отчет с {{chartLabels[0]}} по {{chartLabels[chartLabels.length - 1]}}</p>
     <p>Текущий интервал - {{intervalViewName}}.</p>
     <div class="chart-switch-container">
@@ -13,14 +13,16 @@
             </md-icon>
         </button>
     </div>
-    <div style="display: flex;">
-        <canvas baseChart
-                [datasets]="chartData"
-                [labels]="chartLabels"
-                [options]="{}"
-                [legend]="chartLegend"
-                [chartType]="chartType"
-                (chartHover)="chartHovered($event)"
-                (chartClick)="chartClicked($event)"></canvas>
+    <div class="chart-container">
+        <div style="display: grid;">
+            <canvas baseChart
+                    [datasets]="chartData"
+                    [labels]="chartLabels"
+                    [options]="{}"
+                    [legend]="chartLegend"
+                    [chartType]="chartType"
+                    (chartHover)="chartHovered($event)"
+                    (chartClick)="chartClicked($event)"></canvas>
+        </div>
     </div>
 </div>
