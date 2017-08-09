@@ -10,6 +10,18 @@
     overflow: hidden;
 }
 
+.costs-list-cost-counter {
+    position: absolute;
+    right: 1.5rem;
+    top: 1.0rem;
+
+    md-chip-list {
+        :focus {
+            outline: none;
+        }
+    }
+}
+
 .costs-list-cost {
 
     :first-child {
@@ -20,7 +32,4 @@
     cursor: pointer;
     border: solid 1px $primary-color-light;
     border-radius: 5px;
-}
-
-.costs-list {
 }

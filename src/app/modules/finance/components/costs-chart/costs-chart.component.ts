@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
 import {CostsChartLayoutComponent} from "../costs-chart-layout/costs-chart-layout.component";
 import {CostsService} from "../../services/costs.service";
 
@@ -7,29 +7,18 @@ import {CostsService} from "../../services/costs.service";
     templateUrl: 'costs-chart.component.html',
     styleUrls: ['costs-chart.component.scss']
 })
-export class CostsChartComponent implements OnInit {
-
+export class CostsChartComponent {
     @ViewChild(CostsChartLayoutComponent) private costsChartLayoutComponent: CostsChartLayoutComponent;
-    public currentDay: string;
+    chartLayoutParams: any;
 
-    constructor(private costsService: CostsService) {
-
-    }
-
-    ngOnInit() {
-        this.getChart();
-    }
-
-    getChart(options?: any) {
-        this.costsService.getCostsChart(options).subscribe(
-            data => {
-                this.currentDay = data['currentDay'];
-                this.costsChartLayoutComponent.setChartData(data['chart']);
-            },
-            err => {
-                console.log(err);
+    constructor(public costsService: CostsService) {
+            this.chartLayoutParams = {
+                fetchMethod: 'getCostsChart'
             }
-        );
+    }
+
+    updateChart() {
+        this.costsChartLayoutComponent.getChart();
     }
 
     chartClick(e: any) {

@@ -1,6 +1,4 @@
 <div *ngIf="chartDataSet">
-    <p>Финансовый отчет с {{chartLabels[0]}} по {{chartLabels[chartLabels.length - 1]}}</p>
-    <p>Текущий интервал - {{intervalViewName}}.</p>
     <div class="chart-switch-container">
         <button md-icon-button mdTooltip="Линейный график" [mdTooltipPosition]="'above'" (click)="switchChart('line')">
             <md-icon>
