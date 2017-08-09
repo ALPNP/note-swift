@@ -20,7 +20,7 @@ import {
     MdSelectModule,
     MdGridListModule,
     MdProgressSpinnerModule,
-    MdListModule
+    MdListModule, MdChipsModule
 } from '@angular/material';
 import {CommonModule} from "@angular/common";
 import {ReactiveFormsModule} from "@angular/forms";
@@ -39,6 +39,7 @@ import {CostsStatisticComponent} from "./components/costs-statistic/costs-statis
         MdDialogModule,
         MdGridListModule,
         MdCardModule,
+        MdChipsModule,
         MdInputModule,
         MdTooltipModule,
         MdIconModule,

@@ -19,6 +19,6 @@ export class CostsComponent {
 
     requestModifiedData() {
         this.costsListComponent.getCosts();
-        this.costsChartComponent.getChart();
+        this.costsChartComponent.updateChart();
     }
 }
