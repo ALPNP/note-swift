@@ -17,7 +17,6 @@ export class CostsChartLayoutComponent {
     public chartLabels: Array<any> = [];
 
     public chartType: string = 'line';
-    public chartOptions: any = {responsive: true};
     public chartLegend: boolean = true;
 
     constructor() {
@@ -28,14 +27,6 @@ export class CostsChartLayoutComponent {
         this.chartData = chartData['chartData'];
         this.chartLabels = chartData['chartLabels'];
         this.chartDataSet = true;
-    }
-
-    public chartClicked(e: any): void {
-        this.chartClick.emit(e);
-    }
-
-    public chartHovered(e: any): void {
-        this.chartHover.emit(e);
     }
 
     switchChart(type) {
