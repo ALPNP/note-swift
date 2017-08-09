@@ -31,4 +31,12 @@ export class CostsChartComponent implements OnInit {
             }
         );
     }
+
+    chartClick(e: any) {
+        console.log(e);
+    }
+
+    chartHover(e: any) {
+        console.log(e);
+    }
 }

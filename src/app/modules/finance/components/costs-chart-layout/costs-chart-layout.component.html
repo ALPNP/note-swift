@@ -21,8 +21,8 @@
                     [options]="{}"
                     [legend]="chartLegend"
                     [chartType]="chartType"
-                    (chartHover)="chartHovered($event)"
-                    (chartClick)="chartClicked($event)"></canvas>
+                    (chartHover)="chartHover.emit($event)"
+                    (chartClick)="chartClick.emit($event)"></canvas>
         </div>
     </div>
 </div>
