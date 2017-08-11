@@ -1,24 +1,26 @@
 <div *ngIf="chartDataSet">
-    <div class="chart-switch-container">
+    <div class="chart-switch-container" *ngIf="params && params['switchable']">
         <button md-icon-button mdTooltip="Линейный график" [mdTooltipPosition]="'above'" (click)="switchChart('line')">
             <md-icon>
                 show_chart
             </md-icon>
         </button>
-        <button md-icon-button mdTooltip="Гистограмма" [mdTooltipPosition]="'above'" (click)="switchChart('bar')" class="active-chart">
+        <button md-icon-button mdTooltip="Гистограмма" [mdTooltipPosition]="'above'" (click)="switchChart('bar')"
+                class="active-chart">
             <md-icon>
                 insert_chart
             </md-icon>
         </button>
     </div>
     <div class="chart-container">
-        <div style="display: grid;">
-            <canvas baseChart
+        <div class="chart">
+            <canvas baseChart height="150"
                     [datasets]="chartData"
                     [labels]="chartLabels"
-                    [options]="{}"
+                    [options]="chartOptions || {}"
                     [legend]="chartLegend"
                     [chartType]="chartType"
+                    [colors]="chartColors || []"
                     (chartHover)="chartHover.emit($event)"
                     (chartClick)="chartClick.emit($event)"></canvas>
         </div>

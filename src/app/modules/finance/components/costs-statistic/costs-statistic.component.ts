@@ -1,4 +1,5 @@
 import {Component, OnInit} from "@angular/core";
+import {CostsService} from "../../services/costs.service";
 
 @Component({
     selector: 'costs-statistic',
@@ -7,15 +8,32 @@ import {Component, OnInit} from "@angular/core";
 })
 export class CostsStatisticComponent implements OnInit {
 
-    firstDay: string;
-    lastDay: string;
-    statisticData: any;
+    startDay: string;
+    endDay: string;
+    addSummary: number;
+    removeSummary: number;
+    currentInterval: number;
 
-    constructor() {
+    constructor(public costsService: CostsService) {
 
     }
 
     ngOnInit() {
+        this.getStatistic();
+    }
 
+    getStatistic(options?: any) {
+        this.costsService.getCostsStatistic(options).subscribe(
+            data => {
+                this.startDay = data['startDay'];
+                this.endDay = data['endDay'];
+                this.addSummary = data['addSummary'];
+                this.removeSummary = data['removeSummary'];
+                this.currentInterval = data['daysCount'];
+            },
+            err => {
+                console.log(err);
+            }
+        )
     }
 }
