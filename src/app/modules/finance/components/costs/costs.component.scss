@@ -1,17 +1,12 @@
-.app-statistics {
+.app-toolbar {
     display: grid;
-    grid-template-columns: auto;
+    grid-template-columns: 1fr 2fr;
 }
+
 .app-content {
     display: grid;
     margin-top: 7px;
-    grid-template-columns: auto 2fr;
-
-    * {
-        :first-child {
-
-        }
-    }
+    grid-template-columns: 1fr 3fr;
 
     *:nth-child(even) {
         margin-left: 7px;

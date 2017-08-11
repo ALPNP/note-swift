@@ -18,7 +18,8 @@
             "testTsconfig": "tsconfig.spec.json",
             "prefix": "app",
             "styles": [
-                "assets/scss/styles.scss"
+                "assets/scss/styles.scss",
+                "assets/css/pre-bootstrap.css"
             ],
             "scripts": [
             ],

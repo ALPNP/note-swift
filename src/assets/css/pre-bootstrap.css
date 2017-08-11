@@ -1,0 +1,13 @@
+#pre-bootstrap-loader-host {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #C5CAE9;
+}
+
+#pre-bootstrap-loader-host-container {
+    text-align: center;
+    margin-top: 20%;
+}

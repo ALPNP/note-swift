@@ -32,6 +32,10 @@ export class CostsService extends RootService {
         return this.fetch(options, `${this.restUrl}/chart`);
     }
 
+    getCostsStatistic(options?: any): Observable<boolean> {
+        return this.fetch(options, `${this.restUrl}/statistic`);
+    }
+
     deleteCost(id: string): Observable<boolean> {
         const item = {
             _id: id

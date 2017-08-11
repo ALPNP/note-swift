@@ -2,7 +2,7 @@
     <div class="costs-list-cost-counter">
         <md-chip-list>
             <md-chip>
-                {{costs['length']}}
+                {{costs['length'] || 0}}
             </md-chip>
         </md-chip-list>
     </div>
@@ -16,10 +16,11 @@
                 <md-icon md-list-icon>cancel</md-icon>
                 <h4 md-line>За текущий период нет операций</h4>
             </md-list-item>
-            <md-list-item class="costs-list-cost" *ngFor="let cost of costs" (click)="editCost(cost)">
-                <md-icon md-list-icon>{{cost.type}}</md-icon>
+            <md-list-item *ngFor="let cost of costs" class="costs-list-cost" (click)="editCost(cost)">
+                <md-icon md-list-icon *ngIf="cost.type === 'add'" class="add">{{cost.type}}</md-icon>
+                <md-icon md-list-icon *ngIf="cost.type === 'remove'" class="remove">{{cost.type}}</md-icon>
                 <h4 md-line>{{cost.amount}} &#8381;</h4>
-                <p class="costs-list-cost-description" *ngIf="cost.description" md-line>{{cost.description}}</p>
+                <p md-line class="costs-list-cost-description" *ngIf="cost.description">{{cost.description}}</p>
                 <p md-line>{{cost.formatDate}}</p>
             </md-list-item>
         </md-list>

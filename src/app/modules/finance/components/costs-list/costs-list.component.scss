@@ -1,7 +1,6 @@
-@import "../../../../../assets/scss/palette";
+@import "../../../../../assets/scss/palettes/material-palette";
 
 :host {
-    width: 17rem;
 }
 
 .costs-list-cost-description {
@@ -32,4 +31,12 @@
     cursor: pointer;
     border: solid 1px $primary-color-light;
     border-radius: 5px;
+
+    .remove {
+        background-color: rgba(250, 88, 88, 0.8);
+    }
+
+    .add {
+        background-color: rgba(164, 251, 166, 0.8);
+    }
 }

@@ -1,6 +1,10 @@
-@import "../../../../../assets/scss/palette";
+@import "../../../../../assets/scss/palettes/material-palette";
 
 .chart-switch-container {
     display: grid;
     float: right;
+}
+
+.chart {
+    display: grid;
 }

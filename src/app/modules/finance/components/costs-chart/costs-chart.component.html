@@ -4,6 +4,11 @@
         <md-card-subtitle></md-card-subtitle>
     </md-card-header>
     <md-card-content>
-        <costs-chart-layout (chartClick)="chartClick($event)" (charthover)="chartHover($event)" [service]="costsService" [params]="chartLayoutParams"></costs-chart-layout>
+        <costs-chart-layout (chartClick)="chartClick($event)"
+                            (charthover)="chartHover($event)"
+                            [service]="costsService"
+                            [chartColors]="chartLayoutColors"
+                            [params]="chartLayoutParams"
+                            [chartOptions]="chartLayoutOptions"></costs-chart-layout>
     </md-card-content>
 </md-card>

@@ -8,6 +8,8 @@ import {Component, Output, EventEmitter, OnInit, Input} from "@angular/core";
 export class CostsChartLayoutComponent implements OnInit {
     @Input() service: any;
     @Input() params: any;
+    @Input() chartOptions: any;
+    @Input() chartColors: any[];
     @Output() chartClick = new EventEmitter<boolean>();
     @Output() chartHover = new EventEmitter<boolean>();
     public chartDataSet: boolean = false;
