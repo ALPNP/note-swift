@@ -25,7 +25,7 @@ export class CostsChartComponent {
 
         this.chartLayoutColors = [
             {
-                backgroundColor: 'rgba(164,251,166,0.8)',
+                backgroundColor: 'rgba(164,251,166,0.6)',
                 borderColor: 'rgb(74,229,74)',
                 pointBackgroundColor: 'rgb(164,251,166)',
                 pointBorderColor: 'rgb(74,229,74)',
@@ -33,7 +33,7 @@ export class CostsChartComponent {
                 pointHoverBorderColor: '#006203'
             },
             {
-                backgroundColor: 'rgba(250,88,88,0.8)',
+                backgroundColor: 'rgba(250,88,88,0.6)',
                 borderColor: 'rgb(184,0,0)',
                 pointBackgroundColor: 'rgb(250,88,88)',
                 pointBorderColor: 'rgb(184,0,0)',

@@ -12,6 +12,7 @@ import {Cost} from "../../models/cost.model";
 export class EditCostDialogComponent implements OnInit {
 
     cost: Cost;
+    startDate: Date;
 
     strokeWidth: string;
     spinnerHeight: string;
@@ -45,6 +46,10 @@ export class EditCostDialogComponent implements OnInit {
 
     }
 
+    updateStartDate(date: Date): void {
+        this.startDate = new Date(date);
+    }
+
     ngOnInit() {
         this.strokeWidth = '15';
         this.spinnerWidth = '40px';
@@ -57,6 +62,7 @@ export class EditCostDialogComponent implements OnInit {
         });
 
         this.cost = this.dialogData;
+        this.updateStartDate(this.cost.date);
     }
 
     deleteCost(e, id: string) {

@@ -48,6 +48,7 @@ export class CostsListComponent implements OnInit {
     editCost(cost) {
         const config = new MdDialogConfig();
         config.data = cost;
+        console.log(cost);
         let dialogRef = this.dialog.open(EditCostDialogComponent, config);
         dialogRef.afterClosed().subscribe(result => {
             if (result) {

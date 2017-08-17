@@ -20,13 +20,14 @@ import {
     MdSelectModule,
     MdGridListModule,
     MdProgressSpinnerModule,
-    MdListModule, MdChipsModule
+    MdListModule, MdChipsModule, DateAdapter
 } from '@angular/material';
 import {CommonModule} from "@angular/common";
 import {ReactiveFormsModule} from "@angular/forms";
 import {AddCostDialogComponent} from "./components/add-cost-dialog/add-cost-dialog.component";
 import {EditCostDialogComponent} from "./components/edit-cost-dialog/edit-cost-dialog.component";
 import {CostsStatisticComponent} from "./components/costs-statistic/costs-statistic.component";
+import {CustomNativeDateAdapter} from "../../adapters/custom-native-date.adapter";
 
 @NgModule({
     imports: [
@@ -76,7 +77,8 @@ import {CostsStatisticComponent} from "./components/costs-statistic/costs-statis
         EditCostDialogComponent
     ],
     providers: [
-        CostsService
+        CostsService,
+        {provide: DateAdapter, useClass: CustomNativeDateAdapter}
     ]
 })
 export class FinanceModule {
