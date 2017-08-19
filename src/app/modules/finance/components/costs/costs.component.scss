@@ -1,6 +1,10 @@
 .app-toolbar {
     display: grid;
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 2fr 2fr;
+
+    *:nth-child(even) {
+        margin-left: 7px;
+    }
 }
 
 .app-content {
