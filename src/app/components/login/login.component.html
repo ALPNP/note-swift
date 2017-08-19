@@ -7,6 +7,7 @@
             <form [formGroup]="loginForm" (ngSubmit)="login()" id="login-form">
                 <md-input-container>
                     <input mdInput formControlName="name"
+                           type="text"
                            [(ngModel)]="model.name"
                            placeholder="Логин">
                 </md-input-container>
