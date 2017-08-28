@@ -1,11 +1,17 @@
 <md-card class="costs-statistics">
     <md-card-header>
-        <md-card-title>Текущий период:</md-card-title>
-        <md-card-subtitle class="card-subtitle"><strong>{{endDay}} - {{startDay}}</strong></md-card-subtitle>
+        <md-card-title>
+            <strong>{{costStatistic['currentDayName']}} <br> {{costStatistic['formatCurrentDay']}}</strong>
+        </md-card-title>
+        <md-card-subtitle class="card-subtitle">Текущий период c
+            <strong>{{costStatistic['endDay']}}</strong> по <strong>{{costStatistic['startDay']}}</strong>
+        </md-card-subtitle>
     </md-card-header>
     <md-card-content>
-        <p>Доход: <strong>{{addSummary}}</strong> &#8381;</p>
-        <p>Расход: <strong>{{removeSummary}}</strong> &#8381;</p>
-        <p>Баланс: <strong>{{addSummary - removeSummary}}</strong> &#8381;</p>
+        <p class="costs-statistics-add-cost">Доход: <strong>{{costStatistic['addSummary']}}</strong> &#8381;</p>
+        <p class="costs-statistics-remove-cost">Расход: <strong>{{costStatistic['removeSummary']}}</strong> &#8381;
+        </p>
+        <p class="costs-statistics-balance">Баланс: <strong>{{costStatistic['addSummary'] -
+            costStatistic['removeSummary']}}</strong> &#8381;</p>
     </md-card-content>
 </md-card>

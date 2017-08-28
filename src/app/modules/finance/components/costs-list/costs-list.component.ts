@@ -55,7 +55,7 @@ export class CostsListComponent implements OnInit {
                 this.costEdited.emit();
                 this.notificationsService.success('Успех', 'Изменения произведены');
             } else if (result === false) {
-                this.notificationsService.error('Ошибка', 'Изминения не сохранены');
+                this.notificationsService.error('Ошибка', 'Изменения не сохранены');
             }
         });
     }

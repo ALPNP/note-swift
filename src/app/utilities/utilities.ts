@@ -7,4 +7,8 @@ export class Utilities{
         };
         return monthInfo;
     }
+
+    static capitaliseFirstLetter(string: string) {
+        return string.charAt(0).toUpperCase() + string.slice(1);
+    }
 }
