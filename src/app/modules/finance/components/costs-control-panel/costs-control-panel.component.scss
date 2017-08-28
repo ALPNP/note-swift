@@ -1,9 +1,7 @@
 .costs-control-panel {
     margin-top: 7px;
-
-    md-card-header {
-        .card-subtitle {
-            color: #000;
-        }
-    }
+    min-height: 170px;
+    max-height: 170px;
+    overflow-y: auto;
+    overflow-x: hidden;
 }

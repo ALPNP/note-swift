@@ -1,22 +1,27 @@
 .app-toolbar {
     display: grid;
-    grid-template-columns: 2fr 2fr;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: auto;
+    grid-gap: 7px;
 
-    *:nth-child(even) {
-        margin-left: 7px;
+    #costs-statistic {
+        min-width: 275px;
     }
 }
 
 .app-content {
     display: grid;
     margin-top: 7px;
-    grid-template-columns: 1fr 3fr;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: auto;
+    grid-gap: 7px;
 
-    *:nth-child(even) {
-        margin-left: 7px;
+    #costs-list {
+        min-width: 275px;
+        height: 100%;
     }
 
-    *:last-child {
-
+    #costs-chart {
+        height: 100%;
     }
 }

@@ -1,9 +1,38 @@
+@import "./../../../../../assets/scss/palettes/green-palette";
+@import "./../../../../../assets/scss/palettes/red-palette";
+@import './../../../../../assets/scss/palettes/material-palette';
+
 .costs-statistics {
     margin-top: 7px;
+    min-height: 170px;
+    max-height: 170px;
+    overflow-y: hidden;
+    overflow-x: hidden;
 
     md-card-header {
         .card-subtitle {
             color: #000;
+        }
+    }
+
+    md-card-content {
+        p {
+            text-align: center;
+            padding: 4px;
+            border-radius: 4px;
+            margin: 3px 3px 3px 3px;
+        }
+
+        .costs-statistics-add-cost {
+            background-color: $very-light-green;
+        }
+
+        .costs-statistics-remove-cost {
+            background-color: $very-light-red;
+        }
+
+        .costs-statistics-balance {
+            background-color: $primary-color-light;
         }
     }
 }

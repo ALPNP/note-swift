@@ -3,12 +3,14 @@
         <h3>Финансы</h3>
     </md-card>
     <div class="app-toolbar">
+        <costs-statistic id="costs-statistic"></costs-statistic>
         <costs-control-panel></costs-control-panel>
-        <costs-statistic></costs-statistic>
     </div>
     <div class="app-content">
-        <costs-list (costEdited)="requestModifiedData()" (costDeleted)="requestModifiedData()"></costs-list>
-        <costs-chart></costs-chart>
+        <costs-list id="costs-list"
+                    (costEdited)="requestModifiedData()"
+                    (costDeleted)="requestModifiedData()"></costs-list>
+        <costs-chart id="costs-chart"></costs-chart>
     </div>
     <div class="app-actions">
         <add-cost (costAdded)="requestModifiedData()"></add-cost>

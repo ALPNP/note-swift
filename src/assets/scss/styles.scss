@@ -18,3 +18,17 @@ body {
 .full-width {
     width: 100%;
 }
+
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+    background-color: $primary-color-light;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    background-color: $primary-color-light;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: $primary-color-dark;
+}
