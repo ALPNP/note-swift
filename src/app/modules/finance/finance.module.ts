@@ -18,19 +18,9 @@ import {CostsControlPanel} from "./components/costs-control-panel/costs-control-
         SharedModule,
         CommonModule
     ],
-    exports: [
-        CostsComponent,
-        AddCostComponent,
-        CostsComponent,
-        CostsChartLayoutComponent,
-        CostsListComponent,
-        CostsChartComponent,
-        CostsStatisticComponent
-    ],
     declarations: [
         CostsComponent,
         AddCostComponent,
-        CostsComponent,
         CostsChartLayoutComponent,
         CostsListComponent,
         CostsChartComponent,

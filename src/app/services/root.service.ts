@@ -70,7 +70,7 @@ export class RootService {
 
     update(item: any, restUrl?: string) {
         let body = JSON.stringify(item);
-        let headers = new Headers({ 'Content-Type': 'application/json' });
+        let headers = new Headers({'Content-Type': 'application/json'});
         let options = new RequestOptions({
             headers: headers
         });

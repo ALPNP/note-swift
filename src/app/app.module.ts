@@ -7,7 +7,6 @@ import {MainMenuComponent} from './components/main-menu/main-menu.component';
 import {CalendarComponent} from './components/calendar/calendar.component';
 import {DashboardComponent} from './components/dashboard/dashboard.component';
 import {LoginComponent} from './components/login/login.component';
-import {routing} from './app.routing';
 import {FinanceModule} from "./modules";
 import {SharedModule} from './modules';
 import {AuthModule} from './modules';
@@ -23,7 +22,6 @@ import {AuthModule} from './modules';
     imports: [
         SharedModule,
         AuthModule,
-        routing,
         FinanceModule
     ],
     providers: [
