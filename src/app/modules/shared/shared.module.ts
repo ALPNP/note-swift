@@ -28,6 +28,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {ReactiveFormsModule} from "@angular/forms";
 import {CustomNativeDateAdapter} from "../../adapters/custom-native-date.adapter";
 import {ChartsModule} from "ng2-charts";
+import {RoutingModule} from "../routing/routing.module";
 
 @NgModule({
     imports: [
@@ -53,6 +54,7 @@ import {ChartsModule} from "ng2-charts";
         BrowserModule,
         HttpModule,
         BrowserAnimationsModule,
+        RoutingModule,
         ReactiveFormsModule,
         ChartsModule
     ],
@@ -79,6 +81,7 @@ import {ChartsModule} from "ng2-charts";
         BrowserModule,
         HttpModule,
         BrowserAnimationsModule,
+        RoutingModule,
         ReactiveFormsModule,
         ChartsModule
     ],
