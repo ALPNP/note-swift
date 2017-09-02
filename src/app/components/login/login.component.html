@@ -2,7 +2,7 @@
     <div id="login-layout-host">
         <div id="login-layout">
             <div id="login-header">
-                <h4>Note Swift</h4>
+                <h1>Note swift</h1>
             </div>
             <form [formGroup]="loginForm" (ngSubmit)="login()" id="login-form">
                 <md-input-container>
@@ -18,11 +18,15 @@
                            placeholder="Пароль">
                 </md-input-container>
                 <br>
-                <button md-button
+                <button md-raised-button color="accent"
                         [disabled]="!loginForm.valid">Войти
                 </button>
             </form>
+            <div class="login-layout-toolbar">
+                <button md-raised-button color="primary" routerLink="register">Регистрация</button>
+            </div>
         </div>
     </div>
     <simple-notifications [options]="options"></simple-notifications>
+    <router-outlet></router-outlet>
 </div>
