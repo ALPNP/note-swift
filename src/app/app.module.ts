@@ -10,6 +10,7 @@ import {LoginComponent} from './components/login/login.component';
 import {FinanceModule} from "./modules";
 import {SharedModule} from './modules';
 import {AuthModule} from './modules';
+import { RegisterComponent } from './components/register/register.component';
 
 @NgModule({
     declarations: [
@@ -17,7 +18,8 @@ import {AuthModule} from './modules';
         CalendarComponent,
         MainMenuComponent,
         DashboardComponent,
-        LoginComponent
+        LoginComponent,
+        RegisterComponent
     ],
     imports: [
         SharedModule,
