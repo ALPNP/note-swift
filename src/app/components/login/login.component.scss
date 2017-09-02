@@ -1,5 +1,9 @@
 @import "../../../assets/scss/palettes/material-palette";
 
+.active {
+    background-color: $accent-color;
+}
+
 #login-page {
     display: flex;
     height: 100%;
