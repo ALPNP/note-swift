@@ -11,10 +11,38 @@
 
 #register-layout-host {
     width: 350px;
-    height: 350px;
+    height: auto;
     border-radius: 15px;
     border: solid 3px $primary-color-dark;
     padding: 7px;
     text-align: center;
     background-color: white;
+
+    #register-layout {
+        position: relative;
+        .close-layout {
+            right: 0;
+            position: absolute;
+        }
+
+        .register-header {
+            h4 {
+                padding-top: 0.6rem;
+                margin-top: 0 !important;
+            }
+        }
+
+        .registration-form {
+            .grid-form {
+                margin: 0 auto;
+                width: 70%;
+                display: grid;
+                grid-template-columns: 1fr;
+            }
+        }
+    }
+}
+
+.registration-form-submit-container {
+    margin-top: 1.0rem;
 }

@@ -32,3 +32,19 @@ body {
 ::-webkit-scrollbar-thumb {
     background-color: $primary-color-dark;
 }
+
+hr.hr-style1 {
+    height: 10px;
+    border: 0;
+    box-shadow: 0 10px 10px -10px #8c8b8b inset;
+}
+
+hr.hr-style2-accent {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(255, 64, 129, 1), rgba(0, 0, 0, 0));
+}
+
+hr.hr-no-margin {
+    margin: 0;
+}
