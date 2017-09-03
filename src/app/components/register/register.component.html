@@ -1,5 +1,79 @@
 <div id="register-layout-host">
     <div id="register-layout">
-        test
+        <button class="close-layout" md-icon-button color="accent" routerLink="/">
+            <md-icon>close</md-icon>
+        </button>
+        <div class="register-header">
+            <h4>Регистрация</h4>
+        </div>
+        <hr class="hr-style2-accent hr-no-margin">
+        <div class="registration-form">
+            <form [formGroup]="registerForm" (submit)="submit()" class="grid-form">
+
+                <md-input-container>
+                    <input type="text"
+                           mdInput
+                           formControlName="login"
+                           [(ngModel)]="freshUser['login']"
+                           placeholder="Логин">
+                </md-input-container>
+
+                <md-input-container>
+                    <input type="text"
+                           mdInput
+                           formControlName="name"
+                           [(ngModel)]="freshUser['name']"
+                           placeholder="Имя пользователя">
+                </md-input-container>
+
+                <md-input-container>
+                    <input type="email"
+                           mdInput
+                           formControlName="email"
+                           [(ngModel)]="freshUser['email']"
+                           placeholder="E-mail">
+                </md-input-container>
+
+                <md-select placeholder="Ваш пол"
+                           (change)="genderSubFormBuilder(freshUser['genderTypeId'])"
+                           formControlName="genderType"
+                           [(ngModel)]="freshUser['genderTypeId']">
+                    <md-option *ngFor="let genderType of genderTypes"
+                               [value]="genderType.typeId">
+                        {{genderType.name}}
+                    </md-option>
+                </md-select>
+
+                <div formArrayName="genderSubForm">
+                    <div class="register-gender-form"
+                         *ngFor="let genderSubForm of registerForm.controls.genderSubForm['controls']; let i = index;">
+                        <md-input-container [formGroupName]="i"
+                                            *ngIf="genderType === 0">
+                            <input type="number"
+                                   mdInput
+                                   formControlName="weight"
+                                   [(ngModel)]="freshUser['userSpecific']['weight']"
+                                   placeholder="Вес">
+                        </md-input-container>
+                        <md-input-container [formGroupName]="i"
+                                            *ngIf="genderType === 1">
+                            <input type="text"
+                                   mdInput
+                                   formControlName="eyes"
+                                   [(ngModel)]="freshUser['userSpecific']['eyes']"
+                                   placeholder="Цвет глаз">
+                        </md-input-container>
+                    </div>
+                </div>
+
+                <div class="registration-form-submit-container">
+                    <button [disabled]="registerForm.invalid"
+                            type="submit"
+                            md-raised-button color="accent">
+                        Отправить
+                    </button>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
