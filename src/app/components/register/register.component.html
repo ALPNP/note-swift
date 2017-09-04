@@ -13,17 +13,25 @@
                 <md-input-container>
                     <input type="text"
                            mdInput
+                           formControlName="name"
+                           [(ngModel)]="freshUser['name']"
+                           placeholder="Имя пользователя">
+                </md-input-container>
+
+                <md-input-container>
+                    <input type="text"
+                           mdInput
                            formControlName="login"
                            [(ngModel)]="freshUser['login']"
                            placeholder="Логин">
                 </md-input-container>
 
                 <md-input-container>
-                    <input type="text"
+                    <input type="password"
                            mdInput
-                           formControlName="name"
-                           [(ngModel)]="freshUser['name']"
-                           placeholder="Имя пользователя">
+                           formControlName="password"
+                           [(ngModel)]="freshUser['password']"
+                           placeholder="Пароль">
                 </md-input-container>
 
                 <md-input-container>
