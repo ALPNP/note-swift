@@ -17,6 +17,7 @@ export class User {
     genderTypeId: number = null;
     login: string = null;
     userSpecific: UserSpecific = new UserSpecific();
+    password: string = null;
 
     constructor(params?: any) {
         if (params) {
