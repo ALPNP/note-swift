@@ -3,15 +3,24 @@
     <md-icon>menu</md-icon>
 </button>
 <md-menu #menu="mdMenu">
-    <button routerLink="" md-menu-item>
+    <button routerLink=""
+            md-menu-item
+            routerLinkActive="route-active"
+            [routerLinkActiveOptions]="{exact: true}">
         <md-icon>dashboard</md-icon>
         <span>Dashboard</span>
     </button>
-    <button routerLink="/calendar" md-menu-item>
+    <button routerLink="/calendar"
+            routerLinkActive="route-active"
+            [routerLinkActiveOptions]="{exact: false}"
+            md-menu-item>
         <md-icon>event</md-icon>
         <span>Календарь</span>
     </button>
-    <button routerLink="/costs" md-menu-item>
+    <button routerLink="/costs"
+            routerLinkActive="route-active"
+            [routerLinkActiveOptions]="{exact: false}"
+            md-menu-item>
         <md-icon>insert_chart</md-icon>
         <span>Финансы</span>
     </button>

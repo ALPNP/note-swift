@@ -6,6 +6,12 @@ import {Component} from "@angular/core";
     styleUrls: ['./costs-control-panel.component.scss']
 })
 export class CostsControlPanel {
+    showChartStatus: boolean = false;
+
     constructor() {
+    }
+
+    showChart(e): void {
+        this.showChartStatus = !this.showChartStatus;
     }
 }

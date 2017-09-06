@@ -14,12 +14,10 @@ export class CostsComponent {
     }
 
     @ViewChild(CostsListComponent) private costsListComponent: CostsListComponent;
-    @ViewChild(CostsChartComponent) private costsChartComponent: CostsChartComponent;
     @ViewChild(CostsStatisticComponent) private costsStatisticComponent: CostsStatisticComponent;
 
     requestModifiedData() {
         this.costsListComponent.getCosts();
-        this.costsChartComponent.updateChart();
         this.costsStatisticComponent.getStatistic();
     }
 }

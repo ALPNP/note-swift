@@ -3,6 +3,16 @@
         <md-card-title>Панель управления:</md-card-title>
     </md-card-header>
     <md-card-content>
-        
+        <button md-icon-button
+                mdTooltip="График"
+                [mdTooltipPosition]="'above'"
+                (click)="showChart($event)">
+            <md-icon>
+                show_chart
+            </md-icon>
+        </button>
     </md-card-content>
 </md-card>
+<div id="chart-container" *ngIf="showChartStatus">
+    <costs-chart></costs-chart>
+</div>

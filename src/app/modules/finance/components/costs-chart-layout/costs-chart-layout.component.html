@@ -1,5 +1,5 @@
 <div *ngIf="chartDataSet">
-    <div class="chart-switch-container" *ngIf="params && params['switchable']">
+    <div class="chart-switch-container" *ngIf="chartLayoutParams && chartLayoutParams['switchable']">
         <button md-icon-button mdTooltip="Линейный график" [mdTooltipPosition]="'above'" (click)="switchChart('line')">
             <md-icon>
                 show_chart
