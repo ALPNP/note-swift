@@ -7,7 +7,7 @@ import {Component, Output, EventEmitter, OnInit, Input} from "@angular/core";
 })
 export class CostsChartLayoutComponent implements OnInit {
     @Input() service: any;
-    @Input() params: any;
+    @Input() chartLayoutParams: any;
     @Input() chartOptions: any;
     @Input() chartColors: any[];
     @Output() chartClick = new EventEmitter<boolean>();
@@ -20,7 +20,6 @@ export class CostsChartLayoutComponent implements OnInit {
     public currentDay: string;
 
     constructor() {
-
     }
 
     ngOnInit() {
@@ -30,8 +29,10 @@ export class CostsChartLayoutComponent implements OnInit {
     getChart(options?: any) {
         let fetchMethod = 'fetch';
 
-        if (this.params && this.params['fetchMethod']) {
-            fetchMethod = this.params['fetchMethod'];
+        if (this.chartLayoutParams && this.chartLayoutParams['fetchMethod']) {
+            console.log(fetchMethod);
+            fetchMethod = this.chartLayoutParams['fetchMethod'];
+            console.log(fetchMethod);
         }
 
         this.service[fetchMethod](options).subscribe(

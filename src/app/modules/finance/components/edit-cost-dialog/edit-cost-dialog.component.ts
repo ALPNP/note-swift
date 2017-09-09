@@ -3,6 +3,7 @@ import {FormGroup, FormControl, Validators} from "@angular/forms";
 import {CostsService} from "../../services/costs.service";
 import {MdDialogRef, MD_DIALOG_DATA} from "@angular/material";
 import {Cost} from "../../models/cost.model";
+import * as _ from 'lodash';
 
 @Component({
     selector: 'edit-cost-dialog',
@@ -51,21 +52,26 @@ export class EditCostDialogComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.editCostFormInit();
         this.strokeWidth = '15';
         this.spinnerWidth = '40px';
         this.spinnerHeight = '40px';
+        this.cost = _.cloneDeep(this.dialogData);
+        this.updateStartDate(this.cost.date);
+    }
+
+    editCostFormInit(): void {
         this.editCostForm = new FormGroup({
             description: new FormControl(''),
             date: new FormControl('', Validators.required),
             type: new FormControl('', Validators.required),
-            amount: new FormControl('', Validators.required)
+            amount: new FormControl('', [
+                Validators.required, Validators.pattern(/^[0-9]+$/)
+            ])
         });
-
-        this.cost = this.dialogData;
-        this.updateStartDate(this.cost.date);
     }
 
-    deleteCost(e, id: string) {
+    deleteCost(e, id: string): void {
         let curTar = e.currentTarget;
         curTar.disabled = true;
 
@@ -90,7 +96,7 @@ export class EditCostDialogComponent implements OnInit {
             );
     }
 
-    updateCost(cost) {
+    updateCost(cost): void {
         this.loading = true;
         this.costsService.updateCost(cost)
             .finally(() => {

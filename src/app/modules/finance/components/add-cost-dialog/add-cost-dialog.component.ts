@@ -20,6 +20,7 @@ export class AddCostDialogComponent implements OnInit{
     loading: boolean = false;
     addCostForm: FormGroup;
     cost: Cost = new Cost();
+
     costTypes: any[] = [
         {
             id: 0,
@@ -45,11 +46,13 @@ export class AddCostDialogComponent implements OnInit{
             description: new FormControl(''),
             date: new FormControl('', Validators.required),
             type: new FormControl('', Validators.required),
-            amount: new FormControl('', Validators.required)
+            amount: new FormControl('', [
+                Validators.required, Validators.pattern(/^[0-9]+$/)
+            ])
         });
     }
 
-    addNewCost() {
+    addNewCost(): void {
         this.loading = true;
         this.costsService.addNewCost(this.cost)
             .finally(() => this.loading = false)

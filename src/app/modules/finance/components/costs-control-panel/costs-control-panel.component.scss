@@ -5,3 +5,12 @@
     overflow-y: auto;
     overflow-x: hidden;
 }
+
+#chart-container {
+    position: absolute;
+    width: 90%;
+    top: 3rem;
+    left: 3rem;
+    margin: 0 auto;
+    z-index: 2;
+}

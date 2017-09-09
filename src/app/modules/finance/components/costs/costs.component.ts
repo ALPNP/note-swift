@@ -1,7 +1,7 @@
 import {Component, ViewChild} from "@angular/core";
-import {CostsChartComponent} from "../costs-chart/costs-chart.component";
 import {CostsListComponent} from "../costs-list/costs-list.component";
 import {CostsStatisticComponent} from "../costs-statistic/costs-statistic.component";
+import {CostsControlPanelComponent} from "../costs-control-panel/costs-control-panel.component";
 
 @Component({
     selector: 'costs',
@@ -14,12 +14,12 @@ export class CostsComponent {
     }
 
     @ViewChild(CostsListComponent) private costsListComponent: CostsListComponent;
-    @ViewChild(CostsChartComponent) private costsChartComponent: CostsChartComponent;
     @ViewChild(CostsStatisticComponent) private costsStatisticComponent: CostsStatisticComponent;
+    @ViewChild(CostsControlPanelComponent) private costsControlPanelComponent: CostsControlPanelComponent;
 
     requestModifiedData() {
         this.costsListComponent.getCosts();
-        this.costsChartComponent.updateChart();
         this.costsStatisticComponent.getStatistic();
+        this.costsControlPanelComponent.updateChartLayout();
     }
 }

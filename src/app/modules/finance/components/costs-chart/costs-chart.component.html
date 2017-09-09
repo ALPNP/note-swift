@@ -2,6 +2,9 @@
     <md-card-header class="costs-chart-header">
         <md-card-title>График операций:</md-card-title>
         <md-card-subtitle></md-card-subtitle>
+        <button class="close-layout" md-icon-button color="accent" (click)="close.emit($event)">
+            <md-icon>close</md-icon>
+        </button>
     </md-card-header>
     <hr class="hr-style2-accent">
     <md-card-content>
@@ -9,7 +12,7 @@
                             (charthover)="chartHover($event)"
                             [service]="costsService"
                             [chartColors]="chartLayoutColors"
-                            [params]="chartLayoutParams"
+                            [chartLayoutParams]="chartLayoutParams"
                             [chartOptions]="chartLayoutOptions"></costs-chart-layout>
     </md-card-content>
 </md-card>
