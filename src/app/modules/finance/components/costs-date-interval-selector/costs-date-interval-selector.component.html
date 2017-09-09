@@ -1,0 +1,23 @@
+<div id="costs-date-interval-selector-container">
+    <form [formGroup]="dateIntervalForm" class="costs-date-interval-selector-container-form">
+        <md-input-container>
+            <input mdInput
+                   [(ngModel)]="dateInterval.startDate"
+                   [mdDatepicker]="pickerStartDate"
+                   formControlName="startDate"
+                   placeholder="Начальная дата">
+            <button mdSuffix [mdDatepickerToggle]="pickerStartDate"></button>
+        </md-input-container>
+
+        <md-input-container>
+            <input mdInput
+                   [(ngModel)]="dateInterval.endDate"
+                   [mdDatepicker]="pickerEndDate"
+                   formControlName="endDate"
+                   placeholder="Конечная дата">
+            <button mdSuffix [mdDatepickerToggle]="pickerEndDate"></button>
+        </md-input-container>
+    </form>
+    <md-datepicker touchUi="true" #pickerStartDate></md-datepicker>
+    <md-datepicker touchUi="true" #pickerEndDate></md-datepicker>
+</div>
