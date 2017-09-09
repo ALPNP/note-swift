@@ -6,6 +6,18 @@
     overflow-x: hidden;
 }
 
+.md-card-content-grid {
+    display: grid;
+    grid-gap: 1rem;
+    grid-template-columns: 1fr 1fr;
+}
+
+.graph-button-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
 #chart-container {
     position: absolute;
     width: 90%;
