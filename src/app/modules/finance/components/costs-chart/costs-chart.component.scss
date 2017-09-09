@@ -1,1 +1,11 @@
+.close-layout {
+    position: absolute;
+    right: 24px;
+    top: 13px;
+}
 
+@media screen and (max-width: 600px) {
+    .close-layout {
+        right: 15px;
+    }
+}

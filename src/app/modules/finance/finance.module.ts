@@ -11,7 +11,7 @@ import {AddCostDialogComponent} from "./components/add-cost-dialog/add-cost-dial
 import {EditCostDialogComponent} from "./components/edit-cost-dialog/edit-cost-dialog.component";
 import {CostsStatisticComponent} from "./components/costs-statistic/costs-statistic.component";
 import {SharedModule} from "../shared/shared.module";
-import {CostsControlPanel} from "./components/costs-control-panel/costs-control-panel.component";
+import {CostsControlPanelComponent} from "./components/costs-control-panel/costs-control-panel.component";
 
 @NgModule({
     imports: [
@@ -28,7 +28,7 @@ import {CostsControlPanel} from "./components/costs-control-panel/costs-control-
         AddCostDialogComponent,
         EditCostDialogComponent,
         CostsStatisticComponent,
-        CostsControlPanel
+        CostsControlPanelComponent
     ],
     entryComponents: [
         Spinner,

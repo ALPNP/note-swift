@@ -6,7 +6,7 @@
         <button md-icon-button
                 mdTooltip="График"
                 [mdTooltipPosition]="'above'"
-                (click)="showChart($event)">
+                (click)="toggleChart($event)">
             <md-icon>
                 show_chart
             </md-icon>
@@ -14,5 +14,5 @@
     </md-card-content>
 </md-card>
 <div id="chart-container" *ngIf="showChartStatus">
-    <costs-chart></costs-chart>
+    <costs-chart (close)="toggleChart($event)"></costs-chart>
 </div>

@@ -1,4 +1,4 @@
-import {Component, ViewChild} from '@angular/core';
+import {Component, ViewChild, Output, EventEmitter} from '@angular/core';
 import {CostsChartLayoutComponent} from "../costs-chart-layout/costs-chart-layout.component";
 import {CostsService} from "../../services/costs.service";
 
@@ -8,6 +8,7 @@ import {CostsService} from "../../services/costs.service";
     styleUrls: ['costs-chart.component.scss']
 })
 export class CostsChartComponent {
+    @Output() close: EventEmitter<any> = new EventEmitter<any>();
     @ViewChild(CostsChartLayoutComponent) private costsChartLayoutComponent: CostsChartLayoutComponent;
     chartLayoutParams: any = {
         fetchMethod: 'getCostsChart',
@@ -36,6 +37,10 @@ export class CostsChartComponent {
             pointHoverBorderColor: '#FF4081'
         }
     ];
+
+    updateChart(): void {
+        this.costsChartLayoutComponent.getChart();
+    }
 
     constructor(public costsService: CostsService) {
     }
