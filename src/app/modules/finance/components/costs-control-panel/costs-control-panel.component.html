@@ -3,13 +3,10 @@
         <md-card-title>Панель управления:</md-card-title>
     </md-card-header>
     <md-card-content>
-        <button md-icon-button
-                mdTooltip="График"
-                [mdTooltipPosition]="'above'"
-                (click)="toggleChart($event)">
-            <md-icon>
-                show_chart
-            </md-icon>
+        <costs-date-interval-selector></costs-date-interval-selector>
+        <button md-raised-button color="primary" (click)="toggleChart($event)">
+            <md-icon>show_chart</md-icon>
+            График
         </button>
     </md-card-content>
 </md-card>

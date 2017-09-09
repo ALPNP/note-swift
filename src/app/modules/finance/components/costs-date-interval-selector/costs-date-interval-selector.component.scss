@@ -1,0 +1,7 @@
+#costs-date-interval-selector-container {
+    .costs-date-interval-selector-container-form {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 1rem;
+    }
+}

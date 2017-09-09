@@ -12,6 +12,7 @@ import {EditCostDialogComponent} from "./components/edit-cost-dialog/edit-cost-d
 import {CostsStatisticComponent} from "./components/costs-statistic/costs-statistic.component";
 import {SharedModule} from "../shared/shared.module";
 import {CostsControlPanelComponent} from "./components/costs-control-panel/costs-control-panel.component";
+import {CostsDateIntervalSelector} from "./components/costs-date-interval-selector/costs-date-interval-selector.component";
 
 @NgModule({
     imports: [
@@ -28,13 +29,15 @@ import {CostsControlPanelComponent} from "./components/costs-control-panel/costs
         AddCostDialogComponent,
         EditCostDialogComponent,
         CostsStatisticComponent,
-        CostsControlPanelComponent
+        CostsControlPanelComponent,
+        CostsDateIntervalSelector
     ],
     entryComponents: [
         Spinner,
         AddCostComponent,
         AddCostDialogComponent,
-        EditCostDialogComponent
+        EditCostDialogComponent,
+        CostsDateIntervalSelector
     ],
     providers: [
         CostsService
