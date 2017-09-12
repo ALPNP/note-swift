@@ -5,7 +5,8 @@
                    [(ngModel)]="dateInterval.startDate"
                    [mdDatepicker]="pickerStartDate"
                    formControlName="startDate"
-                   placeholder="Начальная дата">
+                   placeholder="Начальная дата"
+                   (dateInput)="startDateHandler($event)">
             <button mdSuffix [mdDatepickerToggle]="pickerStartDate"></button>
         </md-input-container>
 
@@ -14,7 +15,8 @@
                    [(ngModel)]="dateInterval.endDate"
                    [mdDatepicker]="pickerEndDate"
                    formControlName="endDate"
-                   placeholder="Конечная дата">
+                   placeholder="Конечная дата"
+                   (dateInput)="endDateHandler($event)">
             <button mdSuffix [mdDatepickerToggle]="pickerEndDate"></button>
         </md-input-container>
     </form>

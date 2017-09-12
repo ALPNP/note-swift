@@ -8,7 +8,6 @@ import {CostsChartComponent} from "../costs-chart/costs-chart.component";
 })
 export class CostsControlPanelComponent {
     showChartStatus: boolean = false;
-
     @ViewChild(CostsChartComponent) private costsChartComponent: CostsChartComponent;
 
     constructor() {

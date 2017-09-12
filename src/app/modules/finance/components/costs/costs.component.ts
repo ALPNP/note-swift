@@ -9,15 +9,14 @@ import {CostsControlPanelComponent} from "../costs-control-panel/costs-control-p
     styleUrls: ['costs.component.scss']
 })
 export class CostsComponent {
-
-    constructor() {
-    }
-
     @ViewChild(CostsListComponent) private costsListComponent: CostsListComponent;
     @ViewChild(CostsStatisticComponent) private costsStatisticComponent: CostsStatisticComponent;
     @ViewChild(CostsControlPanelComponent) private costsControlPanelComponent: CostsControlPanelComponent;
 
-    requestModifiedData() {
+    constructor() {
+    }
+
+    requestModifiedData(): void {
         this.costsListComponent.getCosts();
         this.costsStatisticComponent.getStatistic();
         this.costsControlPanelComponent.updateChartLayout();
