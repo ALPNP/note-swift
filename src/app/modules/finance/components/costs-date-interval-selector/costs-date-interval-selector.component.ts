@@ -21,16 +21,28 @@ export class CostsDateIntervalSelector implements OnInit {
 
     dateIntervalFormInit(): void {
         this.dateIntervalForm = new FormGroup({
-            startDate: new FormControl(this.dateInterval.startDate),
+            startDate: new FormControl(this.dateInterval.startDate, [Validators.required]),
             endDate: new FormControl(this.dateInterval.endDate)
         })
     }
 
     startDateHandler(e) {
-        console.log(e);
+        if (e.value) {
+            console.log(e.value);
+        }
     }
 
     endDateHandler(e) {
+        if (e.value) {
+            console.log(e.value);
+        }
+    }
+
+    searchCosts(e): void {
+        console.log(e);
+    }
+
+    dateIntervalFormSubmit(e) {
         console.log(e);
     }
 }

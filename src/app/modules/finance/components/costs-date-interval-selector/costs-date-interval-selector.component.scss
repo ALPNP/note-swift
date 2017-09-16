@@ -1,7 +1,22 @@
+@import "../../../../../assets/scss/palettes/material-palette";
+
+:host {
+    border: solid 1px $primary-color-light;
+    border-radius: 5px;
+}
+
 #costs-date-interval-selector-container {
+    padding-left: 1rem;
     .costs-date-interval-selector-container-form {
         display: grid;
         grid-template-columns: 1fr 1fr;
         grid-gap: 1rem;
+    }
+
+    .submit {
+        width: 100%;
+        * {
+            text-align: center;
+        }
     }
 }

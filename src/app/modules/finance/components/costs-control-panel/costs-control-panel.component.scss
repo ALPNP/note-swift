@@ -9,13 +9,14 @@
 .md-card-content-grid {
     display: grid;
     grid-gap: 1rem;
-    grid-template-columns: 1fr 1fr;
-}
+    grid-template-columns: 1fr 2fr;
 
-.graph-button-container {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
+    .graph-button-container {
+        width: 100%;
+        button {
+            float: right;
+        }
+    }
 }
 
 #chart-container {
@@ -39,5 +40,15 @@
         width: auto;
         left: 0.1rem;
         right: 0.1rem;
+    }
+}
+
+@media screen and (max-width: 870px){
+    .md-card-content-grid {
+        grid-template-columns: 1fr;
+
+        .graph-button-container {
+            float: left;
+        }
     }
 }
