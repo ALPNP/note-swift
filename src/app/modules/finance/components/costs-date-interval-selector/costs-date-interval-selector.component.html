@@ -1,25 +1,24 @@
 <div id="costs-date-interval-selector-container">
     <form [formGroup]="dateIntervalForm" class="costs-date-interval-selector-container-form">
-        <md-input-container>
+        <md-form-field>
             <input mdInput
                    [(ngModel)]="dateInterval.startDate"
-                   [mdDatepicker]="pickerStartDate"
                    formControlName="startDate"
-                   placeholder="Начальная дата"
-                   (dateInput)="startDateHandler($event)">
-            <button mdSuffix [mdDatepickerToggle]="pickerStartDate"></button>
-        </md-input-container>
-
-        <md-input-container>
+                   [mdDatepicker]="pickerStartDate"
+                   (dateInput)="startDateHandler($event)"
+                   placeholder="Начальная дата">
+            <md-datepicker-toggle mdSuffix [for]="pickerStartDate"></md-datepicker-toggle>
+            <md-datepicker touchUi="true" #pickerStartDate></md-datepicker>
+        </md-form-field>
+        <md-form-field>
             <input mdInput
                    [(ngModel)]="dateInterval.endDate"
-                   [mdDatepicker]="pickerEndDate"
                    formControlName="endDate"
-                   placeholder="Конечная дата"
-                   (dateInput)="endDateHandler($event)">
-            <button mdSuffix [mdDatepickerToggle]="pickerEndDate"></button>
-        </md-input-container>
+                   [mdDatepicker]="pickerEndDate"
+                   (dateInput)="endDateHandler($event)"
+                   placeholder="Конечная дата">
+            <md-datepicker-toggle mdSuffix [for]="pickerEndDate"></md-datepicker-toggle>
+            <md-datepicker touchUi="true" #pickerEndDate></md-datepicker>
+        </md-form-field>
     </form>
-    <md-datepicker touchUi="true" #pickerStartDate></md-datepicker>
-    <md-datepicker touchUi="true" #pickerEndDate></md-datepicker>
 </div>

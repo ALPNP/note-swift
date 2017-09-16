@@ -9,15 +9,15 @@
         <table cellpadding="0">
             <tr>
                 <td>
-                    <md-input-container>
+                    <md-form-field>
                         <input mdInput
                                [(ngModel)]="cost.date"
-                               [mdDatepicker]="picker"
                                formControlName="date"
+                               [mdDatepicker]="picker"
                                placeholder="Выберите дату операции">
-                        <button mdSuffix [mdDatepickerToggle]="picker"></button>
-                    </md-input-container>
-                    <md-datepicker touchUi="true" #picker></md-datepicker>
+                        <md-datepicker-toggle mdSuffix [for]="picker"></md-datepicker-toggle>
+                        <md-datepicker [touchUi]="true" #picker></md-datepicker>
+                    </md-form-field>
                 </td>
             </tr>
             <tr>
@@ -34,24 +34,24 @@
             </tr>
             <tr>
                 <td>
-                    <md-input-container class="full-width">
+                    <md-form-field class="full-width">
                         <input mdInput
                                [(ngModel)]="cost.amount"
                                formControlName="amount"
                                type="number"
                                placeholder="Сумма">
-                    </md-input-container>
+                    </md-form-field>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <md-input-container class="full-width">
+                    <md-form-field class="full-width">
                         <input mdInput
                                [(ngModel)]="cost.description"
                                formControlName="description"
                                type="text"
                                placeholder="Описание">
-                    </md-input-container>
+                    </md-form-field>
                 </td>
             </tr>
         </table>

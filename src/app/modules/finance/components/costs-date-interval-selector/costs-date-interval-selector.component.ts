@@ -26,11 +26,11 @@ export class CostsDateIntervalSelector implements OnInit {
         })
     }
 
-    startDateHandler(e): void {
+    startDateHandler(e) {
         console.log(e);
     }
 
-    endDateHandler(e): void {
+    endDateHandler(e) {
         console.log(e);
     }
 }

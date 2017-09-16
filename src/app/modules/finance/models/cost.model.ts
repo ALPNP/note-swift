@@ -1,5 +1,5 @@
 export class Cost {
-    date: Date;
+    date: string;
     formatDate: string;
     type: string;
     amount: number;
