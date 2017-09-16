@@ -39,17 +39,25 @@ export class AddCostDialogComponent implements OnInit{
     }
 
     ngOnInit() {
-        this.strokeWidth = '15';
-        this.spinnerWidth = '40px';
-        this.spinnerHeight = '40px';
+        this.setSpinnerParams();
+        this.addCostFormInit();
+    }
+
+    addCostFormInit(): void {
         this.addCostForm = new FormGroup({
             description: new FormControl(''),
-            date: new FormControl('', Validators.required),
+            date: new FormControl(this.cost.date, Validators.required),
             type: new FormControl('', Validators.required),
             amount: new FormControl('', [
                 Validators.required, Validators.pattern(/^[0-9]+$/)
             ])
         });
+    }
+
+    setSpinnerParams(): void {
+        this.strokeWidth = '15';
+        this.spinnerWidth = '40px';
+        this.spinnerHeight = '40px';
     }
 
     addNewCost(): void {

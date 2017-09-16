@@ -1,4 +1,4 @@
-import {NgModule} from "@angular/core";
+import {NgModule, LOCALE_ID} from "@angular/core";
 import 'hammerjs';
 import {
     MdButtonModule,
@@ -86,7 +86,8 @@ import {RoutingModule} from "../routing/routing.module";
         ChartsModule
     ],
     providers: [
-        {provide: DateAdapter, useClass: CustomNativeDateAdapter}
+        {provide: DateAdapter, useClass: CustomNativeDateAdapter},
+        {provide: LOCALE_ID, useValue: 'ru'},
     ]
 })
 export class SharedModule {

@@ -9,22 +9,24 @@
         <table cellpadding="0">
             <tr>
                 <td>
-                    <md-input-container>
+                    <md-form-field>
                         <input mdInput
-                               [(ngModel)]="cost.date"
-                               [mdDatepicker]="picker"
                                formControlName="date"
+                               [mdDatepicker]="picker"
+                               [(ngModel)]="costDate"
+                               (dateInput)="costDateInput($event)"
+                               (dateChange)="costDateChange($event)"
                                placeholder="Выберите дату операции">
-                        <button mdSuffix [mdDatepickerToggle]="picker"></button>
-                    </md-input-container>
-                    <md-datepicker [startAt]="startDate" [touchUi]="true" #picker></md-datepicker>
+                        <md-datepicker-toggle mdSuffix [for]="picker"></md-datepicker-toggle>
+                        <md-datepicker [touchUi]="true" [startAt]="costDate" #picker></md-datepicker>
+                    </md-form-field>
                 </td>
             </tr>
             <tr>
                 <td>
                     <md-select class="full-width"
-                               [(ngModel)]="cost.type"
                                formControlName="type"
+                               [(ngModel)]="cost.type"
                                placeholder="Статья">
                         <md-option *ngFor="let costType of costTypes" [value]="costType.icon">
                             {{costType.name}}
@@ -34,24 +36,24 @@
             </tr>
             <tr>
                 <td>
-                    <md-input-container class="full-width">
+                    <md-form-field class="full-width">
                         <input mdInput
                                [(ngModel)]="cost.amount"
                                formControlName="amount"
                                type="number"
                                placeholder="Сумма">
-                    </md-input-container>
+                    </md-form-field>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <md-input-container class="full-width">
+                    <md-form-field class="full-width">
                         <input mdInput
                                [(ngModel)]="cost.description"
                                formControlName="description"
                                type="text"
                                placeholder="Описание">
-                    </md-input-container>
+                    </md-form-field>
                 </td>
             </tr>
         </table>

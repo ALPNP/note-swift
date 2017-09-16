@@ -13,7 +13,7 @@ import * as _ from 'lodash';
 export class EditCostDialogComponent implements OnInit {
 
     cost: Cost;
-    startDate: Date;
+    costDate: Date;
 
     strokeWidth: string;
     spinnerHeight: string;
@@ -44,30 +44,27 @@ export class EditCostDialogComponent implements OnInit {
     constructor(private costsService: CostsService,
                 @Optional() @Inject(MD_DIALOG_DATA) private dialogData: any,
                 public dialogRef: MdDialogRef<EditCostDialogComponent>) {
-
-    }
-
-    updateStartDate(date: Date): void {
-        this.startDate = new Date(date);
     }
 
     ngOnInit() {
+        this.cost = _.cloneDeep(this.dialogData);
+        this.costDate = new Date(this.cost.date);
         this.editCostFormInit();
+        this.setSpinnerParams();
+    }
+
+    setSpinnerParams(): void {
         this.strokeWidth = '15';
         this.spinnerWidth = '40px';
         this.spinnerHeight = '40px';
-        this.cost = _.cloneDeep(this.dialogData);
-        this.updateStartDate(this.cost.date);
     }
 
     editCostFormInit(): void {
         this.editCostForm = new FormGroup({
-            description: new FormControl(''),
-            date: new FormControl('', Validators.required),
-            type: new FormControl('', Validators.required),
-            amount: new FormControl('', [
-                Validators.required, Validators.pattern(/^[0-9]+$/)
-            ])
+            description: new FormControl(this.cost.description),
+            date: new FormControl(this.costDate, Validators.required),
+            type: new FormControl(this.cost.type, Validators.required),
+            amount: new FormControl(this.cost.amount, [Validators.required, Validators.pattern(/^[0-9]+$/)])
         });
     }
 
@@ -96,7 +93,9 @@ export class EditCostDialogComponent implements OnInit {
             );
     }
 
-    updateCost(cost): void {
+    updateCost(cost: Cost): void {
+        cost['date'] = this.costDate.toISOString();
+
         this.loading = true;
         this.costsService.updateCost(cost)
             .finally(() => {
@@ -111,5 +110,17 @@ export class EditCostDialogComponent implements OnInit {
                     this.dialogRef.close(false);
                 }
             );
+    }
+
+    costDateInput(e): void {
+        if (e.value) {
+            console.log(e.value);
+        }
+    }
+
+    costDateChange(e): void {
+        if (e.value) {
+            console.log(e.value);
+        }
     }
 }

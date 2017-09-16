@@ -1,15 +1,6 @@
 import {Component, OnInit} from "@angular/core";
 import {FormGroup, FormControl, Validators} from "@angular/forms";
-
-export class DateInterval {
-    startDate: string;
-    endDate: string;
-
-    constructor(startDate?: string, endDate?: string) {
-        this.startDate = startDate || null;
-        this.endDate = endDate || null;
-    }
-}
+import {DateInterval} from "../../models/date-interval.model";
 
 @Component({
     selector: 'costs-date-interval-selector',
@@ -33,5 +24,13 @@ export class CostsDateIntervalSelector implements OnInit {
             startDate: new FormControl(this.dateInterval.startDate),
             endDate: new FormControl(this.dateInterval.endDate)
         })
+    }
+
+    startDateHandler(e) {
+        console.log(e);
+    }
+
+    endDateHandler(e) {
+        console.log(e);
     }
 }
