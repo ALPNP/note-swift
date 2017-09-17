@@ -1,22 +1,11 @@
 .costs-control-panel {
     margin-top: 7px;
-    min-height: 170px;
-    max-height: 170px;
-    overflow-y: auto;
-    overflow-x: hidden;
 }
 
 .md-card-content-grid {
     display: grid;
     grid-gap: 1rem;
-    grid-template-columns: 1fr 2fr;
-
-    .graph-button-container {
-        width: 100%;
-        button {
-            float: right;
-        }
-    }
+    grid-template-columns: auto 1fr;
 }
 
 #chart-container {
@@ -28,27 +17,15 @@
     z-index: 2;
 }
 
-@media screen and (min-width: 900px) {
-    #chart-container {
-        width: 70%;
+// mobile
+@media screen and (max-width: 768px) {
+    .costs-control-panel {
+        margin-top: 0;
     }
-}
 
-
-@media screen and (max-width: 600px) {
     #chart-container {
         width: auto;
         left: 0.1rem;
         right: 0.1rem;
-    }
-}
-
-@media screen and (max-width: 870px){
-    .md-card-content-grid {
-        grid-template-columns: 1fr;
-
-        .graph-button-container {
-            float: left;
-        }
     }
 }

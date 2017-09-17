@@ -8,77 +8,47 @@
         </div>
         <hr class="hr-style2-accent hr-no-margin">
         <div class="registration-form">
-            <form [formGroup]="registerForm" (submit)="submit()" class="grid-form">
+            <form [formGroup]="registerForm" (submit)="submit($event)" class="grid-form">
 
-                <md-input-container>
+                <md-form-field>
                     <input type="text"
                            mdInput
                            formControlName="name"
                            [(ngModel)]="freshUser['name']"
                            placeholder="Имя пользователя">
-                </md-input-container>
+                </md-form-field>
 
-                <md-input-container>
+                <md-form-field>
                     <input type="text"
                            mdInput
                            formControlName="login"
                            [(ngModel)]="freshUser['login']"
                            placeholder="Логин">
-                </md-input-container>
+                </md-form-field>
 
-                <md-input-container>
+                <md-form-field>
                     <input type="password"
                            mdInput
                            formControlName="password"
                            [(ngModel)]="freshUser['password']"
                            placeholder="Пароль">
-                </md-input-container>
+                </md-form-field>
 
-                <md-input-container>
+                <md-form-field>
                     <input type="email"
                            mdInput
+                           class="full-width"
                            formControlName="email"
                            [(ngModel)]="freshUser['email']"
                            placeholder="E-mail">
-                </md-input-container>
-
-                <md-select placeholder="Ваш пол"
-                           (change)="genderSubFormBuilder(freshUser['genderTypeId'])"
-                           formControlName="genderType"
-                           [(ngModel)]="freshUser['genderTypeId']">
-                    <md-option *ngFor="let genderType of genderTypes"
-                               [value]="genderType.typeId">
-                        {{genderType.name}}
-                    </md-option>
-                </md-select>
-
-                <div formArrayName="genderSubForm">
-                    <div class="register-gender-form"
-                         *ngFor="let genderSubForm of registerForm.controls.genderSubForm['controls']; let i = index;">
-                        <md-input-container [formGroupName]="i"
-                                            *ngIf="genderType === 0">
-                            <input type="number"
-                                   mdInput
-                                   formControlName="weight"
-                                   [(ngModel)]="freshUser['userSpecific']['weight']"
-                                   placeholder="Вес">
-                        </md-input-container>
-                        <md-input-container [formGroupName]="i"
-                                            *ngIf="genderType === 1">
-                            <input type="text"
-                                   mdInput
-                                   formControlName="eyes"
-                                   [(ngModel)]="freshUser['userSpecific']['eyes']"
-                                   placeholder="Цвет глаз">
-                        </md-input-container>
-                    </div>
-                </div>
+                </md-form-field>
 
                 <div class="registration-form-submit-container">
                     <button [disabled]="registerForm.invalid"
                             type="submit"
                             md-raised-button color="accent">
-                        Отправить
+                        <md-icon>done</md-icon>
+                        Готово
                     </button>
                 </div>
             </form>

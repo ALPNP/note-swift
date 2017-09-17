@@ -15,7 +15,6 @@
     border-radius: 15px;
     border: solid 3px $primary-color-dark;
     padding: 7px;
-    text-align: center;
     background-color: white;
 
     #register-layout {
@@ -27,6 +26,7 @@
 
         .register-header {
             h4 {
+                text-align: center;
                 padding-top: 0.6rem;
                 margin-top: 0 !important;
             }
@@ -34,10 +34,14 @@
 
         .registration-form {
             .grid-form {
-                margin: 0 auto;
-                width: 70%;
+                width: 100%;
                 display: grid;
                 grid-template-columns: 1fr;
+
+                * {
+                    width: auto;
+                    margin: 0 auto;
+                }
             }
         }
     }

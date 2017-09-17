@@ -4,8 +4,7 @@
 
 .costs-statistics {
     margin-top: 7px;
-    min-height: 170px;
-    max-height: 170px;
+    height: calc(100% - 48px - 7px);
     overflow-y: hidden;
     overflow-x: hidden;
 

@@ -3,20 +3,18 @@
 :host {
     border: solid 1px $primary-color-light;
     border-radius: 5px;
+    width: 100%;
 }
 
 #costs-date-interval-selector-container {
-    padding-left: 1rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
     .costs-date-interval-selector-container-form {
         display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-gap: 1rem;
-    }
+        grid-template-columns: 1fr;
 
-    .submit {
-        width: 100%;
-        * {
-            text-align: center;
+        .submit {
+            margin-bottom: 0.1rem;
         }
     }
 }

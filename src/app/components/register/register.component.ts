@@ -8,21 +8,7 @@ import {User, UserSpecific} from "../../models/user.model";
     styleUrls: ['register.component.scss']
 })
 export class RegisterComponent implements OnInit {
-
     freshUser: User;
-    genderType: number;
-
-    genderTypes: Object[] = [
-        {
-            name: "Мужской",
-            typeId: 0
-        },
-        {
-            name: "Женский",
-            typeId: 1
-        }
-    ];
-
     registerForm: FormGroup;
 
     constructor(private formBuilder: FormBuilder) {
@@ -35,64 +21,15 @@ export class RegisterComponent implements OnInit {
 
     registerFormInitializer(): void {
         this.registerForm = this.formBuilder.group({
-            name: ['', [Validators.required]],
-            login: ['', [Validators.required]],
-            password: ['', [
-                Validators.required,
-                Validators.minLength(10)
-            ]],
-            email: ['', [Validators.required]],
-            genderType: ['', [Validators.required]],
-            genderSubForm: this.formBuilder.array([])
+            name: [this.freshUser.name, [Validators.required]],
+            login: [this.freshUser.login, [Validators.required]],
+            password: [this.freshUser.password, [Validators.required, Validators.minLength(10)]],
+            email: [this.freshUser.email, [Validators.required]]
         });
     }
 
-    genderSubFormBuilder(id: number): void {
-        switch (id) {
-            case 0:
-                this.createMaleForm();
-                break;
-            case 1:
-                this.createFemaleForm();
-                break;
-            default:
-                console.error('gender type not valid');
-        }
-    }
-
-    createFemaleForm(): void {
-        let ctx = this;
-        ctx.freshUser.setUserSpecific(new UserSpecific());
-        ctx.registerForm.controls.genderSubForm['controls'] = [];
-        const genderSubForm = <FormArray>this.registerForm.get('genderSubForm');
-        genderSubForm.push(addFemaleForm());
-
-        function addFemaleForm(): FormGroup {
-            return ctx.formBuilder.group({
-                eyes: ['']
-            });
-        }
-
-        this.genderType = this.freshUser['genderTypeId'];
-    }
-
-    createMaleForm(): void {
-        let ctx = this;
-        ctx.freshUser.setUserSpecific(new UserSpecific());
-        ctx.registerForm.controls.genderSubForm['controls'] = [];
-        const genderSubForm = <FormArray>this.registerForm.get('genderSubForm');
-        genderSubForm.push(addMaleForm());
-
-        function addMaleForm(): FormGroup {
-            return ctx.formBuilder.group({
-                weight: ['']
-            });
-        }
-
-        this.genderType = this.freshUser['genderTypeId'];
-    }
-
-    submit(): void {
+    submit(e): void {
+        console.log(e);
         console.log(this.freshUser);
         console.log('submit');
     }

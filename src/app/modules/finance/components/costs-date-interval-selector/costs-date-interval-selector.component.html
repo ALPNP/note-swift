@@ -1,6 +1,5 @@
 <div id="costs-date-interval-selector-container">
-    <form [formGroup]="dateIntervalForm" (submit)="dateIntervalFormSubmit($event)" class="costs-date-interval-selector-container-form">
-        <div>
+    <form [formGroup]="dateIntervalForm" class="costs-date-interval-selector-container-form">
         <md-form-field>
             <input mdInput
                    [(ngModel)]="dateInterval.startDate"
@@ -23,10 +22,13 @@
             <md-datepicker-toggle mdSuffix [for]="pickerEndDate"></md-datepicker-toggle>
             <md-datepicker touchUi="true" #pickerEndDate></md-datepicker>
         </md-form-field>
-        </div>
-        <button md-button class="submit" [disabled]="!dateIntervalForm.valid" type="submit" (click)="searchCosts($event)">
-            <md-icon>search</md-icon>
-            Поиск операций
+        <button md-button
+                color="primary"
+                class="submit"
+                (click)="dateIntervalFormSubmit($event)"
+                [disabled]="!dateIntervalForm.valid || searchRunning"
+                type="submit">
+            <md-icon class="md-24" aria-label="Поиск операций">search</md-icon>
         </button>
     </form>
 </div>

@@ -1,7 +1,6 @@
 .app-toolbar {
     display: grid;
     grid-template-columns: 1fr 2fr;
-    grid-template-rows: auto;
     grid-gap: 7px;
 
     #costs-statistic {
@@ -13,15 +12,21 @@
     display: grid;
     margin-top: 7px;
     grid-template-columns: 1fr 2fr;
-    grid-template-rows: auto;
     grid-gap: 7px;
 
     #costs-list {
         min-width: 275px;
         height: 100%;
     }
+}
 
-    #costs-chart {
-        height: 100%;
+// mobile
+@media screen and (max-width: 768px) {
+    .app-toolbar {
+        grid-template-columns: 1fr;
+    }
+
+    .app-content {
+        grid-template-columns: 1fr;
     }
 }
