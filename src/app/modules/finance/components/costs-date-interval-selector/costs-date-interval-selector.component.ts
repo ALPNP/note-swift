@@ -1,4 +1,4 @@
-import {Component, OnInit} from "@angular/core";
+import {Component, OnInit, Output, EventEmitter} from "@angular/core";
 import {FormGroup, FormControl, Validators} from "@angular/forms";
 import {DateInterval} from "../../models/date-interval.model";
 import * as moment from 'moment';
@@ -6,7 +6,7 @@ import {CostsService} from "../../services/costs.service";
 
 moment.locale('ru');
 
-function datePickerValidation (input: FormControl) {
+function datePickerValidator (input: FormControl) {
     const dateRegExp = /(\d+)(-|\.)(\d+)(?:-|\.)(?:(\d+)\s+(\d+):(\d+)(?::(\d+))?(?:\.(\d+))?)?/;
     const parsedInputValue = moment(input.value).format('L');
 
@@ -22,19 +22,25 @@ export class CostsDateIntervalSelector implements OnInit {
     dateInterval: DateInterval;
     dateIntervalForm: FormGroup;
     searchRunning: boolean;
+    @Output() costsSearchEmitter: EventEmitter<any> = new EventEmitter<any>();
 
     constructor(private costsService: CostsService) {
-        this.dateInterval = new DateInterval();
-        this.searchRunning = false;
     }
 
     ngOnInit() {
+        this.dateInterval = new DateInterval();
+        this.searchRunning = false;
         this.dateIntervalFormInit();
+        this.costsStreamObserver();
+    }
+
+    costsStreamObserver(): void {
+        this.costsService.costsFetched$.subscribe(data => this.searchRunning = false);
     }
 
     dateIntervalFormInit(): void {
         this.dateIntervalForm = new FormGroup({
-            startDate: new FormControl(this.dateInterval.startDate, [Validators.required, datePickerValidation]),
+            startDate: new FormControl(this.dateInterval.startDate, [Validators.required, datePickerValidator]),
             endDate: new FormControl(this.dateInterval.endDate)
         })
     }
@@ -52,18 +58,14 @@ export class CostsDateIntervalSelector implements OnInit {
     }
 
     dateIntervalFormSubmit(e) {
-        console.log(this.dateInterval);
         this.searchRunning = true;
-        this.costsService.searchCostsByDateInterval(this.dateInterval)
-            .finally(() => this.searchRunning = false)
-            .subscribe(
-                data => {
-                    console.log(data);
-                },
-                err => {
-                    console.log(err);
-                }
-            )
+        this.costsService.setDateInterval(this.dateInterval);
+        this.costsSearchEmitter.emit();
+    }
 
+    clearDateInterval(e): void {
+        this.costsService.clearDateInterval();
+        this.dateIntervalForm.reset();
+        this.costsSearchEmitter.emit();
     }
 }

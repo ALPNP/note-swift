@@ -12,9 +12,9 @@
     .costs-date-interval-selector-container-form {
         display: grid;
         grid-template-columns: 1fr;
-
-        .submit {
-            margin-bottom: 0.1rem;
-        }
+    }
+    .costs-date-interval-selector-container-actions {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
     }
 }

@@ -22,13 +22,22 @@
             <md-datepicker-toggle mdSuffix [for]="pickerEndDate"></md-datepicker-toggle>
             <md-datepicker touchUi="true" #pickerEndDate></md-datepicker>
         </md-form-field>
-        <button md-button
-                color="primary"
-                class="submit"
-                (click)="dateIntervalFormSubmit($event)"
-                [disabled]="!dateIntervalForm.valid || searchRunning"
-                type="submit">
-            <md-icon class="md-24" aria-label="Поиск операций">search</md-icon>
-        </button>
+        <div class="costs-date-interval-selector-container-actions">
+            <button md-button
+                    color="primary"
+                    class="submit"
+                    (click)="dateIntervalFormSubmit($event)"
+                    [disabled]="!dateIntervalForm.valid || searchRunning"
+                    type="submit">
+                <md-icon class="md-24" aria-label="Поиск операций">search</md-icon>
+            </button>
+            <button md-button
+                    color="primary"
+                    (click)="clearDateInterval($event)"
+                    [disabled]="searchRunning"
+                    type="button">
+                <md-icon class="md-24" aria-label="Очистить фильтр">clear</md-icon>
+            </button>
+        </div>
     </form>
 </div>
