@@ -4,7 +4,7 @@
     </md-card>
     <div class="app-toolbar">
         <costs-statistic id="costs-statistic"></costs-statistic>
-        <costs-control-panel></costs-control-panel>
+        <costs-control-panel (costsSearchEmitter)="costsSearchEmitter($event)"></costs-control-panel>
     </div>
     <div class="app-content">
         <costs-list id="costs-list"

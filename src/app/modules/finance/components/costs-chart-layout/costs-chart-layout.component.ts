@@ -30,9 +30,7 @@ export class CostsChartLayoutComponent implements OnInit {
         let fetchMethod = 'fetch';
 
         if (this.chartLayoutParams && this.chartLayoutParams['fetchMethod']) {
-            console.log(fetchMethod);
             fetchMethod = this.chartLayoutParams['fetchMethod'];
-            console.log(fetchMethod);
         }
 
         this.service[fetchMethod](options).subscribe(

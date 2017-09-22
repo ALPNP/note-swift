@@ -4,7 +4,7 @@
     </md-card-header>
     <md-card-content>
         <div class="md-card-content-grid">
-            <costs-date-interval-selector></costs-date-interval-selector>
+            <costs-date-interval-selector (costsSearchEmitter)="costsSearchEmitter.emit($event)"></costs-date-interval-selector>
             <div class="graph-button-container">
                 <button md-raised-button color="primary" (click)="toggleChart($event)">
                     <md-icon>show_chart</md-icon>

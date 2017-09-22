@@ -7,17 +7,13 @@ import {MdDialog, MdDialogConfig} from "@angular/material";
 @Component({
     selector: 'costs-list',
     templateUrl: 'costs-list.component.html',
-    styleUrls: ['costs-list.component.scss'],
-    providers: [CostsService]
+    styleUrls: ['costs-list.component.scss']
 })
 export class CostsListComponent implements OnInit {
-
     @Output() costDeleted = new EventEmitter<boolean>();
     @Output() costEdited = new EventEmitter<boolean>();
-
     costs: any = [];
     costsLoaded: boolean = false;
-
     notifyOptions: any = {
         position: ["bottom", "right"],
         timeOut: 3000,

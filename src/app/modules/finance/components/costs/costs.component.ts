@@ -21,4 +21,8 @@ export class CostsComponent {
         this.costsStatisticComponent.getStatistic();
         this.costsControlPanelComponent.updateChartLayout();
     }
+
+    costsSearchEmitter(e): void {
+        this.requestModifiedData();
+    }
 }

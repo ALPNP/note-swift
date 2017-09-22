@@ -7,16 +7,28 @@ import 'rxjs/add/observable/throw';
 import {RootService} from "../../../services/root.service";
 import {AuthHttp} from "angular2-jwt";
 import {DateInterval} from "../models/date-interval.model";
-import {Response} from "@angular/http";
+import {Subject} from "rxjs";
 
 @Injectable()
 export class CostsService extends RootService {
-
     protected restUrl: string;
+    dateInterval: DateInterval;
 
     constructor(authHttp: AuthHttp) {
         super(authHttp);
         this.restUrl = 'api/costs';
+        this.dateInterval = new DateInterval();
+    }
+
+    private costsFetched = new Subject<any>();
+    costsFetched$ = this.costsFetched.asObservable();
+
+    setDateInterval(dateInterval: DateInterval): void {
+        this.dateInterval = dateInterval;
+    }
+
+    clearDateInterval(): void {
+        this.dateInterval = new DateInterval();
     }
 
     addNewCost(item: any): Observable<boolean> {
@@ -28,7 +40,13 @@ export class CostsService extends RootService {
     }
 
     getCosts(options?: any): Observable<boolean> {
-        return this.fetch(options, this.restUrl);
+        let startDate = this.dateInterval.startDate ? this.dateInterval.startDate.toISOString() : null;
+        let endDate = this.dateInterval.endDate ? this.dateInterval.endDate.toISOString() : null;
+        const fetchUrlWithInterval = `${this.restUrl}?startDate=${startDate}&endDate=${endDate}`;
+
+        return this.fetch(options, fetchUrlWithInterval).finally(() => {
+            this.costsFetched.next(true);
+        });
     }
 
     getCostsChart(options?: any): Observable<boolean> {
@@ -45,19 +63,5 @@ export class CostsService extends RootService {
         };
 
         return this.remove(item, `${this.restUrl}`);
-    }
-
-    searchCostsByDateInterval(dateInterval: DateInterval): Observable<any> {
-        let startDate = dateInterval.startDate ? dateInterval.startDate.toISOString() : null;
-        let endDate = dateInterval.endDate ? dateInterval.endDate.toISOString() : null;
-
-        return this.authHttp.get(`${this.baseUrl}${this.restUrl}/search?startDate=${startDate}&endDate=${endDate}`)
-            .map((res: Response) => {
-                return res.json();
-            })
-            .catch((err: any) => {
-                return Observable.throw(err);
-            })
-            .delay(3000);
     }
 }
