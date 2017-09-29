@@ -12,11 +12,12 @@ moment.locale('ru');
     styleUrls: ['./costs-statistic.component.scss']
 })
 export class CostsStatisticComponent implements OnInit {
-
-    costStatistic: CostStatistic = new CostStatistic();
-    loading: boolean = false;
+    costStatistic: CostStatistic;
+    loading: boolean;
 
     constructor(public costsService: CostsService) {
+        this.costStatistic = new CostStatistic();
+        this.loading = false;
     }
 
     ngOnInit() {
@@ -25,7 +26,7 @@ export class CostsStatisticComponent implements OnInit {
 
     getStatistic(options?: any) {
         this.loading = true;
-        this.costsService.getCostsStatistic(options)
+        this.costsService.getCostsStatisticByInterval(options)
             .finally(() => this.loading = false)
             .subscribe(
                 data => this.costStatistic = new CostStatistic(data),
