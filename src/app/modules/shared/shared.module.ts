@@ -19,7 +19,9 @@ import {
     MdListModule,
     MdRadioModule,
     MdChipsModule,
-    DateAdapter
+    DateAdapter,
+    MdPaginatorModule,
+    MdPaginatorIntl
 } from '@angular/material';
 import {SimpleNotificationsModule} from "angular2-notifications";
 import {BrowserModule} from "@angular/platform-browser";
@@ -29,6 +31,7 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {CustomNativeDateAdapter} from "../../adapters/custom-native-date.adapter";
 import {ChartsModule} from "ng2-charts";
 import {RoutingModule} from "../routing/routing.module";
+import {customMdPaginatorIntl} from "./custom-md-paginator-intl";
 
 @NgModule({
     imports: [
@@ -43,6 +46,7 @@ import {RoutingModule} from "../routing/routing.module";
         MdTabsModule,
         MdDatepickerModule,
         MdNativeDateModule,
+        MdPaginatorModule,
         MdSelectModule,
         MdChipsModule,
         MdToolbarModule,
@@ -72,6 +76,7 @@ import {RoutingModule} from "../routing/routing.module";
         MdNativeDateModule,
         MdSelectModule,
         MdChipsModule,
+        MdPaginatorModule,
         MdToolbarModule,
         MdProgressSpinnerModule,
         MdTableModule,
@@ -88,6 +93,7 @@ import {RoutingModule} from "../routing/routing.module";
     providers: [
         {provide: DateAdapter, useClass: CustomNativeDateAdapter},
         {provide: LOCALE_ID, useValue: 'ru'},
+        {provide: MdPaginatorIntl, useValue: customMdPaginatorIntl()},
     ]
 })
 export class SharedModule {
