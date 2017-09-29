@@ -57,6 +57,14 @@ export class CostsService extends RootService {
         return this.fetch(options, `${this.restUrl}/statistic`);
     }
 
+    getCostsStatisticByInterval(options?: any): any {
+        let startDate = this.dateInterval.startDate ? this.dateInterval.startDate.toISOString() : null;
+        let endDate = this.dateInterval.endDate ? this.dateInterval.endDate.toISOString() : null;
+        const fetchUrlWithInterval = `${this.restUrl}/statistic?startDate=${startDate}&endDate=${endDate}`;
+
+        return this.fetch(options, fetchUrlWithInterval).delay(1000);
+    }
+
     deleteCost(id: string): Observable<boolean> {
         const item = {
             _id: id
