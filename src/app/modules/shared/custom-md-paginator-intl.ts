@@ -11,7 +11,7 @@ const rangeLabel = (page: number, pageSize: number, length: number) => {
     return `${startIndex + 1} - ${endIndex} из ${length}`;
 };
 
-export function customMdPaginatorIntl(): MdPaginatorIntl {
+export function  customMdPaginatorIntl(): MdPaginatorIntl {
     const pagIntl = new MdPaginatorIntl();
     pagIntl.itemsPerPageLabel = 'Количество элементов на странице:';
     pagIntl.nextPageLabel = 'Следующая страница';

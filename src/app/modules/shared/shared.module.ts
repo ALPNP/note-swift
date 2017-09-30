@@ -93,7 +93,7 @@ import {customMdPaginatorIntl} from "./custom-md-paginator-intl";
     providers: [
         {provide: DateAdapter, useClass: CustomNativeDateAdapter},
         {provide: LOCALE_ID, useValue: 'ru'},
-        {provide: MdPaginatorIntl, useValue: customMdPaginatorIntl()},
+        {provide: MdPaginatorIntl, useFactory: customMdPaginatorIntl},
     ]
 })
 export class SharedModule {
