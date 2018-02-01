@@ -1,42 +1,42 @@
 <div id="costs-date-interval-selector-container">
     <form [formGroup]="dateIntervalForm" class="costs-date-interval-selector-container-form">
-        <md-form-field>
-            <input mdInput
+        <mat-form-field>
+            <input matInput
                    [(ngModel)]="dateInterval.startDate"
                    formControlName="startDate"
-                   [mdDatepicker]="pickerStartDate"
+                   [matDatepicker]="pickerStartDate"
                    (dateInput)="startDateHandler($event)"
                    (dateChange)="startDateHandler($event)"
                    placeholder="Начальная дата">
-            <md-datepicker-toggle mdSuffix [for]="pickerStartDate"></md-datepicker-toggle>
-            <md-datepicker touchUi="true" #pickerStartDate></md-datepicker>
-        </md-form-field>
-        <md-form-field>
-            <input mdInput
+            <mat-datepicker-toggle matSuffix [for]="pickerStartDate"></mat-datepicker-toggle>
+            <mat-datepicker touchUi="true" #pickerStartDate></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput
                    [(ngModel)]="dateInterval.endDate"
                    formControlName="endDate"
-                   [mdDatepicker]="pickerEndDate"
+                   [matDatepicker]="pickerEndDate"
                    (dateInput)="endDateHandler($event)"
                    (dateChange)="endDateHandler($event)"
                    placeholder="Конечная дата">
-            <md-datepicker-toggle mdSuffix [for]="pickerEndDate"></md-datepicker-toggle>
-            <md-datepicker touchUi="true" #pickerEndDate></md-datepicker>
-        </md-form-field>
+            <mat-datepicker-toggle matSuffix [for]="pickerEndDate"></mat-datepicker-toggle>
+            <mat-datepicker touchUi="true" #pickerEndDate></mat-datepicker>
+        </mat-form-field>
         <div class="costs-date-interval-selector-container-actions">
-            <button md-button
+            <button mat-button
                     color="primary"
                     class="submit"
                     (click)="dateIntervalFormSubmit($event)"
                     [disabled]="!dateIntervalForm.valid || searchRunning"
                     type="submit">
-                <md-icon class="md-24" aria-label="Поиск операций">search</md-icon>
+                <mat-icon class="mat-24" aria-label="Поиск операций">search</mat-icon>
             </button>
-            <button md-button
+            <button mat-button
                     color="primary"
                     (click)="clearDateInterval($event)"
                     [disabled]="searchRunning"
                     type="button">
-                <md-icon class="md-24" aria-label="Очистить фильтр">clear</md-icon>
+                <mat-icon class="mat-24" aria-label="Очистить фильтр">clear</mat-icon>
             </button>
         </div>
     </form>

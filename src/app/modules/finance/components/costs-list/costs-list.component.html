@@ -1,34 +1,34 @@
-<md-card class="costs-list">
+<mat-card class="costs-list">
     <div class="costs-list-cost-counter">
-        <md-chip-list>
-            <md-chip>
+        <mat-chip-list>
+            <mat-chip>
                 {{costs['length'] || 0}}
-            </md-chip>
-        </md-chip-list>
+            </mat-chip>
+        </mat-chip-list>
     </div>
-    <md-card-header class="costs-list-header">
-        <md-card-title>Операции:</md-card-title>
-        <md-card-subtitle></md-card-subtitle>
-    </md-card-header>
+    <mat-card-header class="costs-list-header">
+        <mat-card-title>Операции:</mat-card-title>
+        <mat-card-subtitle></mat-card-subtitle>
+    </mat-card-header>
     <hr class="hr-style2-primary">
-    <md-card-content>
-        <md-list>
-            <md-list-item *ngIf="costs['length'] === 0 && costsLoaded">
-                <md-icon md-list-icon>cancel</md-icon>
+    <mat-card-content>
+        <mat-list>
+            <mat-list-item *ngIf="costs['length'] === 0 && costsLoaded">
+                <mat-icon md-list-icon>cancel</mat-icon>
                 <h4 md-line>За текущий период нет операций</h4>
-            </md-list-item>
-            <md-list-item *ngFor="let cost of costs" class="costs-list-cost" (click)="editCost(cost)">
-                <md-icon md-list-icon *ngIf="cost.type === 'add'" class="add">{{cost.type}}</md-icon>
-                <md-icon md-list-icon *ngIf="cost.type === 'remove'" class="remove">{{cost.type}}</md-icon>
+            </mat-list-item>
+            <mat-list-item *ngFor="let cost of costs" class="costs-list-cost" (click)="editCost(cost)">
+                <mat-icon md-list-icon *ngIf="cost.type === 'add'" class="add">{{cost.type}}</mat-icon>
+                <mat-icon md-list-icon *ngIf="cost.type === 'remove'" class="remove">{{cost.type}}</mat-icon>
                 <h4 md-line>{{cost.amount}} &#8381;</h4>
                 <p md-line class="costs-list-cost-description" *ngIf="cost.description">{{cost.description}}</p>
                 <p md-line>{{cost.formatDate}}</p>
-            </md-list-item>
-        </md-list>
-    </md-card-content>
-    <md-paginator [length]="100"
+            </mat-list-item>
+        </mat-list>
+    </mat-card-content>
+    <mat-paginator [length]="100"
                   [pageSize]="10"
                   [pageSizeOptions]="[5, 10, 25, 100]">
-    </md-paginator>
+    </mat-paginator>
     <simple-notifications [options]="notifyOptions"></simple-notifications>
-</md-card>
+</mat-card>

@@ -5,25 +5,25 @@
                 <h1>Note swift</h1>
             </div>
             <form [formGroup]="loginForm" (ngSubmit)="login()" id="login-form">
-                <md-input-container>
-                    <input mdInput formControlName="name"
+                <mat-input-container>
+                    <input matInput formControlName="name"
                            type="text"
                            [(ngModel)]="model.name"
                            placeholder="Логин">
-                </md-input-container>
-                <md-input-container>
-                    <input mdInput formControlName="password"
+                </mat-input-container>
+                <mat-input-container>
+                    <input matInput formControlName="password"
                            type="password"
                            [(ngModel)]="model.password"
                            placeholder="Пароль">
-                </md-input-container>
+                </mat-input-container>
                 <br>
-                <button md-raised-button color="accent"
+                <button mat-raised-button color="accent"
                         [disabled]="!loginForm.valid">Войти
                 </button>
             </form>
             <div class="login-layout-toolbar">
-                <button md-raised-button color="primary" routerLink="register" routerLinkActive="active">Регистрация</button>
+                <button mat-raised-button color="primary" routerLink="register" routerLinkActive="active">Регистрация</button>
             </div>
         </div>
     </div>

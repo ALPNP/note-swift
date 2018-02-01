@@ -1,4 +1,4 @@
-import {MdPaginatorIntl} from "@angular/material";
+import {MatPaginatorIntl} from "@angular/material";
 
 const rangeLabel = (page: number, pageSize: number, length: number) => {
     if (length == 0 || pageSize == 0) {
@@ -11,8 +11,8 @@ const rangeLabel = (page: number, pageSize: number, length: number) => {
     return `${startIndex + 1} - ${endIndex} из ${length}`;
 };
 
-export function  customMdPaginatorIntl(): MdPaginatorIntl {
-    const pagIntl = new MdPaginatorIntl();
+export function  customMdPaginatorIntl(): MatPaginatorIntl {
+    const pagIntl = new MatPaginatorIntl();
     pagIntl.itemsPerPageLabel = 'Количество элементов на странице:';
     pagIntl.nextPageLabel = 'Следующая страница';
     pagIntl.previousPageLabel = 'Предыдущая страница';

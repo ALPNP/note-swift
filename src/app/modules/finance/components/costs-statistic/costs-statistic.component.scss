@@ -8,13 +8,13 @@
     overflow-y: hidden;
     overflow-x: hidden;
 
-    md-card-header {
+    mat-card-header {
         .card-subtitle {
             color: #000;
         }
     }
 
-    md-card-content {
+    mat-card-content {
         p {
             text-align: center;
             padding: 4px;

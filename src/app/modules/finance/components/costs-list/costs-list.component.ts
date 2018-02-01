@@ -2,7 +2,7 @@ import {Component, OnInit, Output, EventEmitter} from "@angular/core";
 import {CostsService} from "../../services/costs.service";
 import {NotificationsService} from "angular2-notifications/dist";
 import {EditCostDialogComponent} from "../edit-cost-dialog/edit-cost-dialog.component";
-import {MdDialog, MdDialogConfig} from "@angular/material";
+import {MatDialog, MatDialogConfig} from "@angular/material";
 
 @Component({
     selector: 'costs-list',
@@ -22,7 +22,7 @@ export class CostsListComponent implements OnInit {
 
     constructor(private costsService: CostsService,
                 private notificationsService: NotificationsService,
-                public dialog: MdDialog) {
+                public dialog: MatDialog) {
     }
 
     ngOnInit() {
@@ -42,7 +42,7 @@ export class CostsListComponent implements OnInit {
     }
 
     editCost(cost) {
-        const config = new MdDialogConfig();
+        const config = new MatDialogConfig();
         config.data = cost;
         let dialogRef = this.dialog.open(EditCostDialogComponent, config);
         dialogRef.afterClosed().subscribe(result => {

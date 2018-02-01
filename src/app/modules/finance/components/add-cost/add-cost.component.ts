@@ -1,8 +1,7 @@
 import {Component, Output, EventEmitter} from '@angular/core';
-import {MdDialog} from '@angular/material';
+import {MatDialog} from '@angular/material';
 import {NotificationsService} from "angular2-notifications/dist";
 import {AddCostDialogComponent} from "../add-cost-dialog/add-cost-dialog.component";
-
 
 @Component({
     selector: 'add-cost',
@@ -13,7 +12,7 @@ export class AddCostComponent {
 
     @Output() costAdded = new EventEmitter<boolean>();
 
-    constructor(public dialog: MdDialog,
+    constructor(public dialog: MatDialog,
                 private notificationsService: NotificationsService) {
     }
 

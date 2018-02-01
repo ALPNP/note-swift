@@ -1,15 +1,15 @@
 <div *ngIf="chartDataSet">
     <div class="chart-switch-container" *ngIf="chartLayoutParams && chartLayoutParams['switchable']">
-        <button md-icon-button mdTooltip="Линейный график" [mdTooltipPosition]="'above'" (click)="switchChart('line')">
-            <md-icon>
+        <button mat-icon-button matTooltip="Линейный график" [matTooltipPosition]="'above'" (click)="switchChart('line')">
+            <mat-icon>
                 show_chart
-            </md-icon>
+            </mat-icon>
         </button>
-        <button md-icon-button mdTooltip="Гистограмма" [mdTooltipPosition]="'above'" (click)="switchChart('bar')"
+        <button mat-icon-button matTooltip="Гистограмма" [matTooltipPosition]="'above'" (click)="switchChart('bar')"
                 class="active-chart">
-            <md-icon>
+            <mat-icon>
                 insert_chart
-            </md-icon>
+            </mat-icon>
         </button>
     </div>
     <div class="chart-container">

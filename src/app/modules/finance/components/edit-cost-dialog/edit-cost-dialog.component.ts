@@ -1,7 +1,7 @@
 import {Component, OnInit, Inject, Optional} from "@angular/core";
 import {FormGroup, FormControl, Validators} from "@angular/forms";
 import {CostsService} from "../../services/costs.service";
-import {MdDialogRef, MD_DIALOG_DATA} from "@angular/material";
+import {MatDialogRef, MAT_DIALOG_DATA} from "@angular/material";
 import {Cost} from "../../models/cost.model";
 import * as _ from 'lodash';
 
@@ -42,8 +42,8 @@ export class EditCostDialogComponent implements OnInit {
     };
 
     constructor(private costsService: CostsService,
-                @Optional() @Inject(MD_DIALOG_DATA) private dialogData: any,
-                public dialogRef: MdDialogRef<EditCostDialogComponent>) {
+                @Optional() @Inject(MAT_DIALOG_DATA) private dialogData: any,
+                public dialogRef: MatDialogRef<EditCostDialogComponent>) {
     }
 
     ngOnInit() {
