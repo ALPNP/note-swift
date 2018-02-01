@@ -1,18 +1,18 @@
-<md-card class="costs-chart">
-    <md-card-header class="costs-chart-header">
-        <md-card-title>График операций:</md-card-title>
-        <md-card-subtitle></md-card-subtitle>
-        <button class="close-layout" md-icon-button color="accent" (click)="close.emit($event)">
-            <md-icon>close</md-icon>
+<mat-card class="costs-chart">
+    <mat-card-header class="costs-chart-header">
+        <mat-card-title>График операций:</mat-card-title>
+        <mat-card-subtitle></mat-card-subtitle>
+        <button class="close-layout" mat-icon-button color="accent" (click)="close.emit($event)">
+            <mat-icon>close</mat-icon>
         </button>
-    </md-card-header>
+    </mat-card-header>
     <hr class="hr-style2-accent">
-    <md-card-content>
+    <mat-card-content>
         <costs-chart-layout (chartClick)="chartClick($event)"
                             (charthover)="chartHover($event)"
                             [service]="costsService"
                             [chartColors]="chartLayoutColors"
                             [chartLayoutParams]="chartLayoutParams"
                             [chartOptions]="chartLayoutOptions"></costs-chart-layout>
-    </md-card-content>
-</md-card>
+    </mat-card-content>
+</mat-card>

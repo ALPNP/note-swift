@@ -1,32 +1,32 @@
-<button md-button
-        [mdMenuTriggerFor]="menu">
-    <md-icon>menu</md-icon>
+<button mat-button
+        [matMenuTriggerFor]="menu">
+    <mat-icon>menu</mat-icon>
 </button>
-<md-menu #menu="mdMenu">
+<mat-menu #menu="matMenu">
     <button routerLink=""
-            md-menu-item
+            mat-menu-item
             routerLinkActive="route-active"
             [routerLinkActiveOptions]="{exact: true}">
-        <md-icon>dashboard</md-icon>
+        <mat-icon>dashboard</mat-icon>
         <span>Dashboard</span>
     </button>
     <button routerLink="/calendar"
             routerLinkActive="route-active"
             [routerLinkActiveOptions]="{exact: false}"
-            md-menu-item>
-        <md-icon>event</md-icon>
+            mat-menu-item>
+        <mat-icon>event</mat-icon>
         <span>Календарь</span>
     </button>
     <button routerLink="/costs"
             routerLinkActive="route-active"
             [routerLinkActiveOptions]="{exact: false}"
-            md-menu-item>
-        <md-icon>insert_chart</md-icon>
+            mat-menu-item>
+        <mat-icon>insert_chart</mat-icon>
         <span>Финансы</span>
     </button>
-</md-menu>
+</mat-menu>
 <div class="user-bar">
-    <button md-button (click)="logOut()">
-        <md-icon>exit_to_app</md-icon>
+    <button mat-button (click)="logOut()">
+        <mat-icon>exit_to_app</mat-icon>
     </button>
 </div>

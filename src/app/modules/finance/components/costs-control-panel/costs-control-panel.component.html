@@ -1,19 +1,19 @@
-<md-card class="costs-control-panel">
-    <md-card-header>
-        <md-card-title>Панель управления:</md-card-title>
-    </md-card-header>
-    <md-card-content>
-        <div class="md-card-content-grid">
+<mat-card class="costs-control-panel">
+    <mat-card-header>
+        <mat-card-title>Панель управления:</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <div class="mat-card-content-grid">
             <costs-date-interval-selector (costsSearchEmitter)="costsSearchEmitter.emit($event)"></costs-date-interval-selector>
             <div class="graph-button-container">
-                <button md-raised-button color="primary" (click)="toggleChart($event)">
-                    <md-icon>show_chart</md-icon>
+                <button mat-raised-button color="primary" (click)="toggleChart($event)">
+                    <mat-icon>show_chart</mat-icon>
                     График
                 </button>
             </div>
         </div>
-    </md-card-content>
-</md-card>
+    </mat-card-content>
+</mat-card>
 <div id="chart-container" *ngIf="showChartStatus">
     <costs-chart (close)="toggleChart($event)"></costs-chart>
 </div>

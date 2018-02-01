@@ -9,54 +9,56 @@
         <table cellpadding="0">
             <tr>
                 <td>
-                    <md-form-field>
-                        <input mdInput
+                    <mat-form-field>
+                        <input matInput
                                [(ngModel)]="cost.date"
                                formControlName="date"
-                               [mdDatepicker]="picker"
+                               [matDatepicker]="picker"
                                placeholder="Выберите дату операции">
-                        <md-datepicker-toggle mdSuffix [for]="picker"></md-datepicker-toggle>
-                        <md-datepicker [touchUi]="true" #picker></md-datepicker>
-                    </md-form-field>
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker [touchUi]="true" #picker></mat-datepicker>
+                    </mat-form-field>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <md-select class="full-width"
-                               [(ngModel)]="cost.type"
-                               formControlName="type"
-                               placeholder="Статья">
-                        <md-option *ngFor="let costType of costTypes" [value]="costType.icon">
-                            {{costType.name}}
-                        </md-option>
-                    </md-select>
+                    <mat-form-field>
+                        <mat-select class="full-width"
+                                    [(ngModel)]="cost.type"
+                                    formControlName="type"
+                                    placeholder="Статья">
+                            <mat-option *ngFor="let costType of costTypes" [value]="costType.icon">
+                                {{costType.name}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <md-form-field class="full-width">
-                        <input mdInput
+                    <mat-form-field class="full-width">
+                        <input matInput
                                [(ngModel)]="cost.amount"
                                formControlName="amount"
                                type="number"
                                placeholder="Сумма">
-                    </md-form-field>
+                    </mat-form-field>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <md-form-field class="full-width">
-                        <input mdInput
+                    <mat-form-field class="full-width">
+                        <input matInput
                                [(ngModel)]="cost.description"
                                formControlName="description"
                                type="text"
                                placeholder="Описание">
-                    </md-form-field>
+                    </mat-form-field>
                 </td>
             </tr>
         </table>
-        <button md-raised-button color="primary" class="add-cost-dialog-submit" [disabled]="!addCostForm.valid || loading">
-            <md-icon>check</md-icon>
+        <button mat-raised-button color="primary" class="add-cost-dialog-submit" [disabled]="!addCostForm.valid || loading">
+            <mat-icon>check</mat-icon>
         </button>
     </form>
 </div>

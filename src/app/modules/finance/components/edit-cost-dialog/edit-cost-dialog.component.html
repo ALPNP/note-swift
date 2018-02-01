@@ -9,62 +9,62 @@
         <table cellpadding="0">
             <tr>
                 <td>
-                    <md-form-field>
-                        <input mdInput
+                    <mat-form-field>
+                        <input matInput
                                formControlName="date"
-                               [mdDatepicker]="picker"
+                               [matDatepicker]="picker"
                                [(ngModel)]="costDate"
                                (dateInput)="costDateInput($event)"
                                (dateChange)="costDateChange($event)"
                                placeholder="Выберите дату операции">
-                        <md-datepicker-toggle mdSuffix [for]="picker"></md-datepicker-toggle>
-                        <md-datepicker [touchUi]="true" [startAt]="costDate" #picker></md-datepicker>
-                    </md-form-field>
+                        <mat-datepicker-toggle mdSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker [touchUi]="true" [startAt]="costDate" #picker></mat-datepicker>
+                    </mat-form-field>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <md-select class="full-width"
-                               formControlName="type"
-                               [(ngModel)]="cost.type"
-                               placeholder="Статья">
-                        <md-option *ngFor="let costType of costTypes" [value]="costType.icon">
-                            {{costType.name}}
-                        </md-option>
-                    </md-select>
+                    <mat-form-field>
+                        <mat-select class="full-width"
+                                    formControlName="type"
+                                    [(ngModel)]="cost.type"
+                                    placeholder="Статья">
+                            <mat-option *ngFor="let costType of costTypes" [value]="costType.icon">
+                                {{costType.name}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <md-form-field class="full-width">
-                        <input mdInput
+                    <mat-form-field class="full-width">
+                        <input matInput
                                [(ngModel)]="cost.amount"
                                formControlName="amount"
                                type="number"
                                placeholder="Сумма">
-                    </md-form-field>
+                    </mat-form-field>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <md-form-field class="full-width">
-                        <input mdInput
+                    <mat-form-field class="full-width">
+                        <input matInput
                                [(ngModel)]="cost.description"
                                formControlName="description"
                                type="text"
                                placeholder="Описание">
-                    </md-form-field>
+                    </mat-form-field>
                 </td>
             </tr>
         </table>
 
-        <button md-raised-button color="primary" class="edit-cost-dialog-submit" [disabled]="!editCostForm.valid || loading">
-            <md-icon>save</md-icon>
+        <button mat-raised-button color="primary" class="edit-cost-dialog-submit" [disabled]="!editCostForm.valid || loading">
+            <mat-icon>save</mat-icon>
         </button>
-        <button md-raised-button color="warn" (click)="deleteCost($event, cost['_id'])" [disabled]="loading" class="edit-cost-dialog-delete">
-            <md-icon>
-                delete
-            </md-icon>
+        <button mat-raised-button color="warn" (click)="deleteCost($event, cost['_id'])" [disabled]="loading" class="edit-cost-dialog-delete">
+            <mat-icon>delete</mat-icon>
         </button>
     </form>
     <simple-notifications [options]="notifyOptions"></simple-notifications>

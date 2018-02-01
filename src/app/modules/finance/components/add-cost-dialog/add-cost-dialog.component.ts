@@ -1,5 +1,5 @@
 import {Component, OnInit} from "@angular/core";
-import {MdDialogRef} from "@angular/material";
+import {MatDialogRef} from "@angular/material";
 import {FormGroup, FormControl, Validators} from "@angular/forms";
 import {Cost} from "../../models/cost.model";
 import {CostsService} from "../../services/costs.service";
@@ -34,7 +34,7 @@ export class AddCostDialogComponent implements OnInit{
         }
     ];
 
-    constructor(public dialogRef: MdDialogRef<AddCostDialogComponent>,
+    constructor(public dialogRef: MatDialogRef<AddCostDialogComponent>,
                 protected costsService: CostsService) {
     }
 
