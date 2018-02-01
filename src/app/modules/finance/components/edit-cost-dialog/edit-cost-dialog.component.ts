@@ -4,36 +4,19 @@ import {CostsService} from "../../services/costs.service";
 import {MatDialogRef, MAT_DIALOG_DATA} from "@angular/material";
 import {Cost} from "../../models/cost.model";
 import * as _ from 'lodash';
+import {AddCostDialogComponent} from "../add-cost-dialog/add-cost-dialog.component";
 
 @Component({
     selector: 'edit-cost-dialog',
     templateUrl: './edit-cost-dialog.component.html',
-    styleUrls: ['./edit-cost-dialog.component.scss']
+    styleUrls: ['./edit-cost-dialog.component.scss'],
+    providers: [CostsService]
 })
-export class EditCostDialogComponent implements OnInit {
+export class EditCostDialogComponent extends AddCostDialogComponent implements OnInit {
 
     cost: Cost;
     costDate: Date;
-
-    strokeWidth: string;
-    spinnerHeight: string;
-    spinnerWidth: string;
-
-    loading: boolean = false;
     editCostForm: FormGroup;
-
-    costTypes: any[] = [
-        {
-            id: 0,
-            name: 'Доход',
-            icon: 'add'
-        },
-        {
-            id: 1,
-            name: 'Расход',
-            icon: 'remove'
-        }
-    ];
 
     notifyOptions: any = {
         position: ["bottom", "right"],
@@ -41,9 +24,10 @@ export class EditCostDialogComponent implements OnInit {
         lastOnBottom: true
     };
 
-    constructor(private costsService: CostsService,
+    constructor(protected costsService: CostsService,
                 @Optional() @Inject(MAT_DIALOG_DATA) private dialogData: any,
                 public dialogRef: MatDialogRef<EditCostDialogComponent>) {
+        super(dialogRef, costsService);
     }
 
     ngOnInit() {
@@ -51,12 +35,6 @@ export class EditCostDialogComponent implements OnInit {
         this.costDate = new Date(this.cost.date);
         this.editCostFormInit();
         this.setSpinnerParams();
-    }
-
-    setSpinnerParams(): void {
-        this.strokeWidth = '15';
-        this.spinnerWidth = '40px';
-        this.spinnerHeight = '40px';
     }
 
     editCostFormInit(): void {
