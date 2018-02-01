@@ -14,15 +14,15 @@
     <mat-card-content>
         <mat-list>
             <mat-list-item *ngIf="costs['length'] === 0 && costsLoaded">
-                <mat-icon md-list-icon>cancel</mat-icon>
-                <h4 md-line>За текущий период нет операций</h4>
+                <mat-icon mat-list-icon>cancel</mat-icon>
+                <h4 mat-line>За текущий период нет операций</h4>
             </mat-list-item>
             <mat-list-item *ngFor="let cost of costs" class="costs-list-cost" (click)="editCost(cost)">
-                <mat-icon md-list-icon *ngIf="cost.type === 'add'" class="add">{{cost.type}}</mat-icon>
-                <mat-icon md-list-icon *ngIf="cost.type === 'remove'" class="remove">{{cost.type}}</mat-icon>
-                <h4 md-line>{{cost.amount}} &#8381;</h4>
-                <p md-line class="costs-list-cost-description" *ngIf="cost.description">{{cost.description}}</p>
-                <p md-line>{{cost.formatDate}}</p>
+                <mat-icon mat-list-icon *ngIf="cost.type === 'add'" class="add">{{cost.type}}</mat-icon>
+                <mat-icon mat-list-icon *ngIf="cost.type === 'remove'" class="remove">{{cost.type}}</mat-icon>
+                <h4 mat-line>{{cost.amount}} &#8381;</h4>
+                <p mat-line class="costs-list-cost-description" *ngIf="cost.description">{{cost.description}}</p>
+                <p mat-line>{{cost.formatDate}}</p>
             </mat-list-item>
         </mat-list>
     </mat-card-content>

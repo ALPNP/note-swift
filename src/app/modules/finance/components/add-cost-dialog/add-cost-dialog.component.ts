@@ -8,11 +8,9 @@ import {CostsService} from "../../services/costs.service";
     selector: 'add-cost-dialog',
     templateUrl: 'add-cost-dialog.component.html',
     styleUrls: ['add-cost-dialog.component.scss'],
-    providers: [
-        CostsService
-    ]
+    providers: [CostsService]
 })
-export class AddCostDialogComponent implements OnInit{
+export class AddCostDialogComponent implements OnInit {
 
     strokeWidth: string;
     spinnerHeight: string;
