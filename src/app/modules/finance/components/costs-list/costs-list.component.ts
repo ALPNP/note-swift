@@ -14,7 +14,7 @@ export class CostsListComponent implements OnInit {
     @Output() costEdited = new EventEmitter<boolean>();
     costs: any = [];
     costsLoaded: boolean = false;
-    filterToggle: boolean = false;
+    filterToggle: boolean = true;
     notifyOptions: any = {
         position: ["bottom", "right"],
         timeOut: 3000,
@@ -28,7 +28,7 @@ export class CostsListComponent implements OnInit {
 
     ngOnInit() {
         this.getCosts();
-        this.costsService.costsSorted$.subscribe(data => {
+        this.costsService.costsSortingReset$.subscribe(data => {
             if (data) {
                 this.costs = this.costsService.costs;
             }

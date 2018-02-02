@@ -15,10 +15,10 @@ import {CostsFilterModel} from "../../../models/costs-filter.model";
 @Injectable()
 export class CostsService extends RootService {
     protected restUrl: string;
+
     dateInterval: DateInterval;
-    costsFilterParams: any = {};
     costsSortedProp: boolean = false;
-    costsSortAttr: null;
+    costsSortAttr;
     costs = [];
     originalCosts = [];
 
@@ -45,7 +45,6 @@ export class CostsService extends RootService {
         this.costsFilterModel = model;
     }
 
-
     constructor(authHttp: AuthHttp) {
         super(authHttp);
         this.restUrl = 'api/costs';
@@ -55,8 +54,8 @@ export class CostsService extends RootService {
     private costsFetched = new Subject<any>();
     costsFetched$ = this.costsFetched.asObservable();
 
-    private costsSorted = new Subject<any>();
-    costsSorted$ = this.costsSorted.asObservable();
+    private costsSortingReset = new Subject<any>();
+    costsSortingReset$ = this.costsSortingReset.asObservable();
 
     setDateInterval(dateInterval: DateInterval): void {
         this.dateInterval = dateInterval;
@@ -79,12 +78,13 @@ export class CostsService extends RootService {
         let endDate = this.dateInterval.endDate ? this.dateInterval.endDate.toISOString() : null;
         const fetchUrl = `${this.restUrl}?startDate=${startDate}&endDate=${endDate}`;
         return this.fetch(options, fetchUrl).finally(() => this.costsFetched.next(true)).map((res: Response) => {
+            this.costs = [];
             _.forEach(res, (item) => {
                 this.costs.push(item);
                 this.originalCosts.push(item);
             });
 
-            if (this.costsSorted && this.costsSortAttr) {
+            if (this.costsSortedProp) {
                 return this.costsSorter(this.costsSortAttr);
             }
 
@@ -92,8 +92,15 @@ export class CostsService extends RootService {
         });
     }
 
+    resetCostsSorter() {
+        this.costsSortedProp = false;
+        this.costs = _.clone(this.originalCosts);
+        this.costsSortingReset.next(true);
+    }
+
     costsSorter(sortAttr): any {
         this.costsSortedProp = true;
+        this.costsSortAttr = sortAttr;
 
         if (sortAttr === 'amount_up') {
             this.costs.sort((a, b) => {
