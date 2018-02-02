@@ -9,8 +9,7 @@ import {AddCostDialogComponent} from "../add-cost-dialog/add-cost-dialog.compone
 @Component({
     selector: 'edit-cost-dialog',
     templateUrl: './edit-cost-dialog.component.html',
-    styleUrls: ['./edit-cost-dialog.component.scss'],
-    providers: [CostsService]
+    styleUrls: ['./edit-cost-dialog.component.scss']
 })
 export class EditCostDialogComponent extends AddCostDialogComponent implements OnInit {
 

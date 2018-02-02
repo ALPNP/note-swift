@@ -1,16 +1,22 @@
 <mat-card class="costs-list">
-    <div class="costs-list-cost-counter">
-        <mat-chip-list>
-            <mat-chip>
-                {{costs['length'] || 0}}
-            </mat-chip>
-        </mat-chip-list>
+    <div class="costs-list-toolbar">
+        <div class="costs-list-cost-filter">
+            <button mat-mini-fab [color]="(filterToggle) ? 'accent' : 'primary'" class="costs-list-filter-button" (click)="toggleFilterParams()" matTooltip="Фильтр операций" [matTooltipPosition]="'above'">
+                <mat-icon class="costs-list-filter-button-icon">filter_list</mat-icon>
+            </button>
+        </div>
+        <div class="costs-list-cost-counter">
+            <mat-chip-list>
+                <mat-chip>{{costs['length'] || 0}}</mat-chip>
+            </mat-chip-list>
+        </div>
     </div>
     <mat-card-header class="costs-list-header">
         <mat-card-title>Операции:</mat-card-title>
         <mat-card-subtitle></mat-card-subtitle>
     </mat-card-header>
-    <hr class="hr-style2-primary">
+    <hr [class]="(filterToggle) ? 'hr-style2-accent' : 'hr-style2-primary'">
+    <costs-filter *ngIf="filterToggle"></costs-filter>
     <mat-card-content>
         <mat-list>
             <mat-list-item *ngIf="costs['length'] === 0 && costsLoaded">

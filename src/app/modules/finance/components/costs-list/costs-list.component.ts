@@ -14,6 +14,7 @@ export class CostsListComponent implements OnInit {
     @Output() costEdited = new EventEmitter<boolean>();
     costs: any = [];
     costsLoaded: boolean = false;
+    filterToggle: boolean = false;
     notifyOptions: any = {
         position: ["bottom", "right"],
         timeOut: 3000,
@@ -27,6 +28,11 @@ export class CostsListComponent implements OnInit {
 
     ngOnInit() {
         this.getCosts();
+        this.costsService.costsSorted$.subscribe(data => {
+            if (data) {
+                this.costs = this.costsService.costs;
+            }
+        });
     }
 
     getCosts(options?: any) {
@@ -47,12 +53,15 @@ export class CostsListComponent implements OnInit {
         let dialogRef = this.dialog.open(EditCostDialogComponent, config);
         dialogRef.afterClosed().subscribe(result => {
             if (result) {
-                console.log(result);
                 this.costEdited.emit();
                 this.notificationsService.success('Успех', 'Изменения произведены');
             } else if (result === false) {
                 this.notificationsService.error('Ошибка', 'Изменения не сохранены');
             }
         });
+    }
+
+    toggleFilterParams() {
+        this.filterToggle = !this.filterToggle;
     }
 }
