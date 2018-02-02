@@ -9,14 +9,29 @@
     overflow: hidden;
 }
 
-.costs-list-cost-counter {
+.costs-list-toolbar {
     position: absolute;
     right: 1.5rem;
-    top: 1.0rem;
+    top: 1rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: .3rem;
+    .costs-list-cost-counter {
+        mat-chip-list {
+            :focus {
+                outline: none;
+            }
+        }
+    }
 
-    mat-chip-list {
-        :focus {
-            outline: none;
+    .costs-list-cost-filter {
+        .costs-list-filter-button {
+            width: 31px;
+            height: 31px;
+
+            .costs-list-filter-button-icon {
+                margin: -3px 0px 0px 0px !important;
+            }
         }
     }
 }

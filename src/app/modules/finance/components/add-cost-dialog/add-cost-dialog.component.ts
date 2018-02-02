@@ -7,8 +7,7 @@ import {CostsService} from "../../services/costs.service";
 @Component({
     selector: 'add-cost-dialog',
     templateUrl: 'add-cost-dialog.component.html',
-    styleUrls: ['add-cost-dialog.component.scss'],
-    providers: [CostsService]
+    styleUrls: ['add-cost-dialog.component.scss']
 })
 export class AddCostDialogComponent implements OnInit {
 

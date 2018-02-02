@@ -8,11 +8,43 @@ import {RootService} from "../../../services/root.service";
 import {AuthHttp} from "angular2-jwt";
 import {DateInterval} from "../models/date-interval.model";
 import {Subject} from "rxjs";
+import {Response} from "@angular/http";
+import _ from 'lodash';
+import {CostsFilterModel} from "../../../models/costs-filter.model";
 
 @Injectable()
 export class CostsService extends RootService {
     protected restUrl: string;
     dateInterval: DateInterval;
+    costsFilterParams: any = {};
+    costsSortedProp: boolean = false;
+    costsSortAttr: null;
+    costs = [];
+    originalCosts = [];
+
+    filterAttrs = {
+        amountFilterAttrs: [
+            {
+                label: 'По возрастанию',
+                name: "amount_up"
+            },
+            {
+                label: 'По убыванию',
+                name: "amount_down"
+            }
+        ]
+    };
+
+    costsFilterModel: CostsFilterModel = new CostsFilterModel();
+
+    getCostsFilterModel(): CostsFilterModel {
+        return this.costsFilterModel;
+    }
+
+    setCostsFilterModel(model: CostsFilterModel) {
+        this.costsFilterModel = model;
+    }
+
 
     constructor(authHttp: AuthHttp) {
         super(authHttp);
@@ -22,6 +54,9 @@ export class CostsService extends RootService {
 
     private costsFetched = new Subject<any>();
     costsFetched$ = this.costsFetched.asObservable();
+
+    private costsSorted = new Subject<any>();
+    costsSorted$ = this.costsSorted.asObservable();
 
     setDateInterval(dateInterval: DateInterval): void {
         this.dateInterval = dateInterval;
@@ -42,9 +77,50 @@ export class CostsService extends RootService {
     getCosts(options?: any): Observable<boolean> {
         let startDate = this.dateInterval.startDate ? this.dateInterval.startDate.toISOString() : null;
         let endDate = this.dateInterval.endDate ? this.dateInterval.endDate.toISOString() : null;
-        const fetchUrlWithInterval = `${this.restUrl}?startDate=${startDate}&endDate=${endDate}`;
-        return this.fetch(options, fetchUrlWithInterval).finally(() => this.costsFetched.next(true));
+        const fetchUrl = `${this.restUrl}?startDate=${startDate}&endDate=${endDate}`;
+        return this.fetch(options, fetchUrl).finally(() => this.costsFetched.next(true)).map((res: Response) => {
+            _.forEach(res, (item) => {
+                this.costs.push(item);
+                this.originalCosts.push(item);
+            });
+
+            if (this.costsSorted && this.costsSortAttr) {
+                return this.costsSorter(this.costsSortAttr);
+            }
+
+            return this.costs;
+        });
     }
+
+    costsSorter(sortAttr): any {
+        this.costsSortedProp = true;
+
+        if (sortAttr === 'amount_up') {
+            this.costs.sort((a, b) => {
+                if (a.amount < b.amount) {
+                    return -1;
+                }
+                if (a.amount > b.amount) {
+                    return 1;
+                }
+                return 0;
+            });
+        }
+
+        if (sortAttr === 'amount_down') {
+            this.costs.sort((a, b) => {
+                if (a.amount > b.amount) {
+                    return -1;
+                }
+                if (a.amount < b.amount) {
+                    return 1;
+                }
+                return 0;
+            });
+        }
+
+        return this.costs;
+    };
 
     getCostsChart(options?: any): Observable<boolean> {
         return this.fetch(options, `${this.restUrl}/chart`);
@@ -53,8 +129,8 @@ export class CostsService extends RootService {
     getCostsStatisticByInterval(options?: any): any {
         let startDate = this.dateInterval.startDate ? this.dateInterval.startDate.toISOString() : null;
         let endDate = this.dateInterval.endDate ? this.dateInterval.endDate.toISOString() : null;
-        const fetchUrlWithInterval = `${this.restUrl}/statistic?startDate=${startDate}&endDate=${endDate}`;
-        return this.fetch(options, fetchUrlWithInterval);
+        const fetchUrl = `${this.restUrl}/statistic?startDate=${startDate}&endDate=${endDate}`;
+        return this.fetch(options, fetchUrl);
     }
 
     deleteCost(id: string): Observable<boolean> {

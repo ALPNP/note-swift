@@ -13,6 +13,7 @@ import {CostsStatisticComponent} from "./components/costs-statistic/costs-statis
 import {SharedModule} from "../shared/shared.module";
 import {CostsControlPanelComponent} from "./components/costs-control-panel/costs-control-panel.component";
 import {CostsDateIntervalSelector} from "./components/costs-date-interval-selector/costs-date-interval-selector.component";
+import {CostsFilterComponent} from "./components/costs-filter/costs-filter.component";
 
 @NgModule({
     imports: [
@@ -30,7 +31,8 @@ import {CostsDateIntervalSelector} from "./components/costs-date-interval-select
         EditCostDialogComponent,
         CostsStatisticComponent,
         CostsControlPanelComponent,
-        CostsDateIntervalSelector
+        CostsDateIntervalSelector,
+        CostsFilterComponent
     ],
     entryComponents: [
         Spinner,

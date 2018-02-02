@@ -2,11 +2,13 @@ import {Component, ViewChild} from "@angular/core";
 import {CostsListComponent} from "../costs-list/costs-list.component";
 import {CostsStatisticComponent} from "../costs-statistic/costs-statistic.component";
 import {CostsControlPanelComponent} from "../costs-control-panel/costs-control-panel.component";
+import {CostsService} from "../../services/costs.service";
 
 @Component({
     selector: 'costs',
     templateUrl: 'costs.component.html',
-    styleUrls: ['costs.component.scss']
+    styleUrls: ['costs.component.scss'],
+    providers: [CostsService]
 })
 export class CostsComponent {
     @ViewChild(CostsListComponent) private costsListComponent: CostsListComponent;
