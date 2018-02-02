@@ -36,4 +36,9 @@ export class CostsFilterComponent implements OnInit, OnDestroy {
         let val = e.value;
         this.costsService.costsSorter(val);
     }
+
+    formReset() {
+        this.costsFilterForm.reset();
+        this.costsService.resetCostsSorter();
+    }
 }

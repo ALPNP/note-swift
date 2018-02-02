@@ -13,6 +13,9 @@
                         </mat-option>
                     </mat-select>
                 </mat-form-field>
+                <button mat-mini-fab [disabled]="!costsService.costsSortedProp" [color]="'primary'" class="" (click)="formReset()" matTooltip="Сбросить фильтры" [matTooltipPosition]="'above'">
+                    <mat-icon class="costs-list-filter-button-icon">close</mat-icon>
+                </button>
             </form>
         </mat-list-item>
     </mat-list>
