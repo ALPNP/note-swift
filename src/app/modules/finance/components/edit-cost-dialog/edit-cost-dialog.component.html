@@ -14,10 +14,11 @@
                                formControlName="date"
                                [matDatepicker]="picker"
                                [(ngModel)]="costDate"
+                               required
                                (dateInput)="costDateInput($event)"
                                (dateChange)="costDateChange($event)"
                                placeholder="Выберите дату операции">
-                        <mat-datepicker-toggle mdSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                         <mat-datepicker [touchUi]="true" [startAt]="costDate" #picker></mat-datepicker>
                     </mat-form-field>
                 </td>
@@ -28,11 +29,13 @@
                         <mat-select class="full-width"
                                     formControlName="type"
                                     [(ngModel)]="cost.type"
+                                    required
                                     placeholder="Статья">
                             <mat-option *ngFor="let costType of costTypes" [value]="costType.icon">
                                 {{costType.name}}
                             </mat-option>
                         </mat-select>
+                        <mat-error *ngIf="editCostForm.get('type').invalid">{{getErrorMessage('type', 'Необходимо выбрать статью')}}</mat-error>
                     </mat-form-field>
                 </td>
             </tr>
@@ -43,7 +46,9 @@
                                [(ngModel)]="cost.amount"
                                formControlName="amount"
                                type="number"
+                               required
                                placeholder="Сумма">
+                        <mat-error *ngIf="editCostForm.get('amount').invalid">{{getErrorMessage('amount', 'Укажите сумму')}}</mat-error>
                     </mat-form-field>
                 </td>
             </tr>

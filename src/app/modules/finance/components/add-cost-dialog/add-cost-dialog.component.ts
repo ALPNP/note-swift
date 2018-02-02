@@ -62,16 +62,17 @@ export class AddCostDialogComponent implements OnInit {
         this.loading = true;
         this.costsService.addNewCost(this.cost)
             .finally(() => this.loading = false)
-            .subscribe(
-            data => {
-                this.dialogRef.close(data['success']);
-            },
-            err => {
-                this.dialogRef.close(err);
-            },
-            () => {
-                this.loading = false;
-            }
-        );
+            .subscribe(data => {
+                    this.dialogRef.close(data['success']);
+                }, err => {
+                    this.dialogRef.close(err);
+                }, () => {
+                    this.loading = false;
+                }
+            );
+    }
+
+    public getErrorMessage(formField: string, formErrorText: string) {
+        return this.addCostForm.get(formField).hasError('required') ? (formErrorText || 'Заполните это поле') : '';
     }
 }

@@ -3,7 +3,7 @@ import {FormGroup, FormControl, Validators} from "@angular/forms";
 import {CostsService} from "../../services/costs.service";
 import {MatDialogRef, MAT_DIALOG_DATA} from "@angular/material";
 import {Cost} from "../../models/cost.model";
-import * as _ from 'lodash';
+import _ from 'lodash';
 import {AddCostDialogComponent} from "../add-cost-dialog/add-cost-dialog.component";
 
 @Component({
@@ -51,11 +51,8 @@ export class EditCostDialogComponent extends AddCostDialogComponent implements O
         curTar.disabled = true;
 
         this.costsService.deleteCost(id)
-            .finally(() => {
-                curTar.disabled = false
-            })
-            .subscribe(
-                data => {
+            .finally(() => curTar.disabled = false)
+            .subscribe(data => {
                     if (data['success']) {
                         this.dialogRef.close(true);
                     }
@@ -63,8 +60,7 @@ export class EditCostDialogComponent extends AddCostDialogComponent implements O
                     if (!data['success']) {
                         this.dialogRef.close(false);
                     }
-                },
-                err => {
+                }, err => {
                     console.log(err);
                     this.dialogRef.close(err);
                 }
@@ -76,15 +72,10 @@ export class EditCostDialogComponent extends AddCostDialogComponent implements O
 
         this.loading = true;
         this.costsService.updateCost(cost)
-            .finally(() => {
-                this.loading = false;
-            })
-            .subscribe(
-                data => {
+            .finally(() => this.loading = false)
+            .subscribe(data => {
                     this.dialogRef.close(true);
-                },
-                err => {
-                    console.log(err);
+                }, err => {
                     this.dialogRef.close(false);
                 }
             );
@@ -100,5 +91,9 @@ export class EditCostDialogComponent extends AddCostDialogComponent implements O
         if (e.value) {
             console.log(e.value);
         }
+    }
+    // override
+    public getErrorMessage(formField: string, formErrorText: string) {
+        return this.editCostForm.get(formField).hasError('required') ? (formErrorText || 'Заполните это поле') : '';
     }
 }
